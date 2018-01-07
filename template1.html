@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../public/stylesheets/style.css">
+</head>
+<style>
+	#main{
+		background-color: yellow;
+		/*transform: rotate(20deg);*/
+		border: 50px solid green;
+		overflow: scroll;
+		box-sizing: border-box;
+	}
+	h3{
+		margin: 20%;
+	}
+	#bottom1{
+		border-bottom-left-radius: 90px;
+		border-bottom-right-radius: 90px;
+		background-color: yellow;
+		height: 50px;
+		position: relative;
+		z-index: 1;
+	}
+	#bottom2{
+		border-top-left-radius: 90px;
+		border-top-right-radius: 90px;
+		background-color: darkcyan;
+		height: 50px;
+	}
+	#side1{
+		background-color: darkcyan;
+		padding: 10%;
+	}
+	#side2{
+		position: relative;
+		z-index: 0;
+		background-color: red;
+		padding: 10%;
+		top: -260px;
+	}
+	.third{
+		z-index: 1;
+		position: absolute;
+	}
+	.btn-wrapper{
+		display: inline-block;
+		padding: 10px 5px 10px 5px;
+	}
+	.btn{
+		margin-right: 10px;
+		background-color: white;
+		border: 2px solid black;
+		padding: 6px 14px 6px 14px;
+		transition: background-color 0.5s, box-shadow 0.5s;
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.btn:hover{
+		background-color: black;
+		color: white;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+		transition: 0.5s;
+		transform: scale(1.1);
+	}
+	.arrow{
+		width: 0;
+		height: 0;
+		margin-left:9%;
+		background-color: blue;
+		border-top: 30px solid orange;
+		border-left: 30px solid skyblue;
+		border-right: 30px solid skyblue;
+		z-index: 1;
+		position: absolute;
+		transition: margin-left 0.4s;
+		transition-timing-function: ease-in-out;
+	}
+	.second{
+		position: relative;
+		background: lightgrey;
+		padding: 20%;
+		z-index: 0;
+		border-radius: 0 0 8px 8px;
+	}
+	.top{
+		height: 100px;
+		background-color: lightgrey;
+		border-radius: 8px 8px 0 0;
+	}
+	.card{
+		padding: 8px 5px 8px 5px;
+	}
+	.body{
+		padding: 3px 4px 3px 4px;
+		background-color: lightgrey;
+		border-radius: 5px;
+	}
+	#wrap:nth-child(3){
+		margin-right: 0;
+		background-color: red; 
+	}
+	.img-wrapper{
+		height: 250px;
+	}
+	.img-responsive{
+		height: 250px;
+		width: 100%;
+	}
+	.rule{
+		border-top: 10px solid lightgrey;
+		width: 20%;
+		margin-left: 40%;
+		border-radius: 100%;
+		margin-bottom: 20px;
+	}
+	.navbar{
+		position :fixed;
+		top: 0;
+		z-index: 2000;
+		background-color: red;
+	}
+	#main::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+#main::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+</style>
+<body>
+	<div class="container-fluid" id="main">
+		<h3 class="text-center">HEADING 1</h3>
+		<div class="row">
+			<div class="col-xs-1" ></div>
+			<div class="col-md-6 col-xs-11">
+				<div class="btn-wrapper">
+					<button class="btn" id="one">First</button>
+					<button class="btn" id="two">Second</button>
+					<button class="btn" id="three">Third</button>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6"></div>
+			<div class="col-xs-6" id="bottom2"></div>	
+		</div>
+
+		<!--<div class="container top"></div>-->
+		<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-6" id="bottom1"></div>
+		<div class="col-xs-6" id="side1"></div>
+	</div></div>
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-6" id="side2"></div>
+	</div>
+	</div>
+
+	<br><br>
+	<h1 class="text-center">Portfolio</h1>
+		<div class="rule"></div>
+	<div class="container">
+		<div class="row" id="wrap">
+		<div class="col-md-4 col-xs-12 card">
+			<div class="body">
+			<div class="img-wrapper">
+				<img src="https://cdn.pixabay.com/photo/2016/03/28/12/35/cat-1285634_960_720.png" class="img-responsive">
+			</div>
+			<div class="caption">
+				<h5 class="text-center">Caption one! What to say</h5>
+			</div>
+			</div>
+		</div>
+		<div class="col-md-4 col-xs-12 card">
+			<div class="body">
+			<div class="img-wrapper">
+				<img src="http://www.planwallpaper.com/static/images/stunning-images-of-the-space.jpg" class="img-responsive">
+			</div>
+			<div class="caption">
+				<h5 class="text-center">Caption Two! Beautiful Planet earth</h5>
+			</div>
+			</div>
+		</div>
+		<div class="col-md-4 col-xs-12 card" id="sale">
+			<div class="body">
+			<div class="img-wrapper">
+				<img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2016/03/1458289957powerful-images3.jpg" class="img-responsive">
+			</div>
+			<div class="caption">
+				<h5 class="text-center">Caption Three! Really Pandas can swim</h5>
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+		<br><br><br><br><br>
+
+	</div>
+	
+	
+	
+	<!--<div class="container second">
+		<h2 class="text-center">Heading 2</h2>
+		<p class="text-center">Lorem ipsium teri maa kic hoot aue basdjdasd jkahad kjadhjasd kjadjhajdkad jdhjasdl sdjdk js jsda</p>
+		<p class="text-center">Lorem ipsium dsfkd ajdb dasjdb jda asjdbjsad jadn dasjdjdna asjdajdnaw dajdajsd adjasd</p>-->
+	<!--</div>-->
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+
+		$(document).ready(function(){
+
+			$('#main').height($(window).height()-100)
+
+			$('#one').click(function(){
+				$('.arrow').css('marginLeft', '9%')
+			})
+
+			$('#two').click(function(){
+				$('.arrow').css('marginLeft', '15%')
+			})
+
+			$('#three').click(function(){
+				$('.arrow').css('marginLeft', '21%')
+			})
+
+			$(window).scroll(function(){
+				if($(window).scrollTop() >= 414){
+					$('.btn-wrapper').addClass("navbar");
+				}
+				else{
+					$('.btn-wrapper').removeClass("navbar");
+				}	
+			})
+			
+		})
+
+	</script>
+</body>
+</html>

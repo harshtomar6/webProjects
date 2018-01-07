@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+	background: url('bg.jpg') no-repeat;
+	background-width: 100%;
+	background-height: 100%;
+}
+#t1{
+	background-color: #12cebb;
+	width: 10px;
+	height: 80px;
+	position: absolute;
+	top: 200px;
+	left: 400px;
+	float: left;
+}
+#t2{
+	background-color: #12cebb;
+	width: 10px;
+	height: 80px;
+	position: absolute;
+	top: 200px;
+	left: 500px;	
+}
+#t3{
+	background-color: #12cebb;
+	width: 10px;
+	height: 80px;
+	position: absolute;
+	top: 200px;
+	left: 600px;	
+}
+#disk1{
+	background-color: yellow;
+	width: 30px;
+	height: 10px;
+	position: absolute;
+	top: 250px;
+	left: 390px;
+}
+#disk2{
+	background-color: red;
+	width:50px;
+	height: 10px;
+	position: absolute;
+	top: 260px;
+	left: 380px;
+}
+#disk3{
+	background-color: darkblue;
+	width:70px;
+	height: 10px;
+	position: absolute;
+	top: 270px;
+	left: 370px;
+}
+#but{
+	visibility: hidden;
+	position: absolute;
+	top: 350px;
+	left: 450px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background: linear-gradient(#12cebb,#147a70);
+	color: white;
+	font-family: sans-serif;
+	border: none;
+	box-shadow: 1px 1px 2px grey;
+}
+#but:hover{
+	background: linear-gradient(#147a70,#12cebb);
+}
+</style>
+</head>
+<body>
+<div id="t1"></div>
+<div id="t2"></div>
+<div id="t3"></div>
+<div id="disk1"></div>
+<div id="disk2"></div>
+<div id="disk3"></div>
+<button id="but" onclick="moveAgain()">Play Again</button>
+<script type="text/javascript">
+	function moveDisk1(){
+		var d1 = document.getElementById("disk1");
+		var lpos = d1.getBoundingClientRect().left;
+		var tpos = d1.getBoundingClientRect().top;
+		var id,id2;
+
+		id = setInterval(frame, 5);
+		function frame(){
+			if(lpos == 590){
+				clearInterval(id);
+				id2 = setInterval(frame2, 10);
+			}
+
+			else{
+				lpos++;
+				d1.style.left = lpos+"px";
+			}
+		}
+		function frame2(){
+			if(tpos == 270){	
+				clearInterval(id2);
+				moveDisk2();
+			}
+
+			else{
+				tpos++;
+				d1.style.top = tpos+"px";
+			}
+		}
+	}
+
+	function moveDisk2(){
+		var d2 = document.getElementById("disk2");
+		var lpos = d2.getBoundingClientRect().left;
+		var tpos = d2.getBoundingClientRect().top;
+		var id,id2;
+
+		id = setInterval(frame3, 5);
+		function frame3(){
+			if(lpos == 480){
+				clearInterval(id);
+				id2 = setInterval(frame4, 5);
+			}
+			else{
+				lpos++;
+				d2.style.left = lpos+"px";
+			}
+		}
+		function frame4(){
+			if(tpos == 270){
+				clearInterval(id2);
+				moveDisk3();
+			}
+			else{
+				tpos++;
+				d2.style.top = tpos+"px";
+			}
+		}
+	}
+
+	function moveDisk3(){
+		var d1 = document.getElementById("disk1");
+		var lpos = d1.getBoundingClientRect().left;
+		var tpos = d1.getBoundingClientRect().top;
+		var id,id2;
+
+		id = setInterval(frame5, 10);
+		function frame5(){
+			if(tpos == 260){
+				clearInterval(id);
+				id2 = setInterval(frame6, 5);
+			}
+			else{
+				tpos--;
+				d1.style.top = tpos+"px";
+			}
+		}
+		function frame6(){
+			if(lpos == 490){
+				clearInterval(id2);
+				moveDisk4();
+			}
+			else{
+				lpos--;
+				d1.style.left = lpos+"px";
+			}
+		}
+	}
+
+	function moveDisk4(){
+		var d3 = document.getElementById("disk3");
+		var lpos = d3.getBoundingClientRect().left;
+		var tpos = d3.getBoundingClientRect().top;
+		var id,id2,id3;
+
+		id = setInterval(frame7, 10);
+		function frame7(){
+			if(tpos == 250){
+				clearInterval(id);
+				id2 = setInterval(frame8, 5);
+			}
+			else{
+				tpos--;
+				d3.style.top = tpos+"px";
+			}
+		}
+		function frame8(){
+			if(lpos == 570){
+				clearInterval(id2);
+				id3 = setInterval(frame9, 10);
+			}
+			else{
+				lpos++;
+				d3.style.left = lpos+"px";
+			}
+		}
+		function frame9(){
+			if(tpos == 270){
+				clearInterval(id3);
+				moveDisk5();
+			}
+			else{
+				tpos++;
+				d3.style.top = tpos+"px";
+			}
+		}
+	}
+
+	function moveDisk5(){
+		var d1 = document.getElementById("disk1");
+		var lpos = d1.getBoundingClientRect().left;
+		var tpos = d1.getBoundingClientRect().top;
+		var id,id2;
+
+		id = setInterval(frame10, 10);
+		function frame10(){
+			if(lpos == 390){
+				clearInterval(id);
+				id2 = setInterval(frame11, 5);
+			}
+			else{
+				lpos--;
+				d1.style.left = lpos+"px";
+			}
+		}
+		function frame11(){
+			if(tpos == 270){
+				clearInterval(id2);
+				moveDisk6();
+			}
+			else{
+				tpos++;
+				d1.style.top = tpos+"px";
+			}
+		}
+	}
+
+	function moveDisk6(){
+		var d2 = document.getElementById("disk2");
+		var lpos = d2.getBoundingClientRect().left;
+		var tpos = d2.getBoundingClientRect().top;
+		var id,id2;
+
+		id = setInterval(frame12, 5);
+		function frame12(){
+			if(tpos == 260){
+				clearInterval(id);
+				id2 = setInterval(frame13, 10);
+			}
+			else{
+				tpos--;
+				d2.style.top = tpos+"px";
+			}
+		}
+		function frame13(){
+			if(lpos == 580){
+				clearInterval(id2);
+				moveDisk7();
+			}
+			else{
+				lpos++;
+				d2.style.left = lpos+"px";
+			}
+		}
+	}
+
+	function moveDisk7(){
+		var d1 = document.getElementById("disk1");
+		var lpos = d1.getBoundingClientRect().left;
+		var tpos = d1.getBoundingClientRect().top;
+		var id,id2;
+
+		id = setInterval(frame14, 10);
+		function frame14(){
+			if(tpos == 250){
+				clearInterval(id);
+				id2 = setInterval(frame15, 5);
+			}
+			else{
+				tpos--;
+				d1.style.top = tpos+"px";
+			}
+		}
+		function frame15(){
+			if(lpos == 590){
+				clearInterval(id2);
+				document.getElementById("but").style.visibility="visible";
+			}
+			else{
+				lpos++;
+				d1.style.left = lpos+"px";
+			}
+		}
+	}
+
+	function moveAgain(){
+		document.getElementById("disk1").style.top = "250px";
+		document.getElementById("disk1").style.left = "390px";
+		document.getElementById("disk2").style.top = "260px";
+		document.getElementById("disk2").style.left = "380px";
+		document.getElementById("disk3").style.top = "270px";
+		document.getElementById("disk3").style.left = "370px"
+		moveDisk1();
+	}
+
+	window.onload = moveDisk1;
+</script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo|Oleo+Script|Lobster|Architects+Daughter|Economica" rel="stylesheet">
+<script src="generatorScript.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--Top Heading-->
+    <div class="container-fluid">
+        <h5 class="text-center" id="invoice">Tax/Sales Invoice</h5>
+    </div>
+
+    <br>
+    <!--Top Container-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <!--LOGO Container-->
+            <div class="text-center col-md-3 col-xs-3 col-sm-3">
+                <img class="text-center img-responsive" src="logo.png" id="logo">
+            </div>
+            <!--Company Header-->
+            <div class="col-md-6 col-xs-6 col-sm-6">
+                <h3 class="text-center name">Parth Concrete Udyog</h3>
+                <h5 class="text-center des">Village Kandhni, Agra Road</h5>
+                <h5 class="text-center des">Etawah - 206001</h5>
+                <h5 class="text-center des"><strong>Phone: </strong>8791712467<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-mail: </strong>parthconcrete@gmail.com</h5>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <br><br>
+    <!--Bill details container-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <!--Customer's details-->
+            <div class="col-md-8 col-xs-8">
+                <h5 class="addr" id="customerName"><strong>Customer Name: </strong></h5>
+                <input type="text" class="form-control" placeholder="Customer's Name" id="cname">
+                <h5 class="addr"><strong>Customer TIN : </strong></h5>
+                <input type="text" class="form-control" placeholder="Customer's TIN" id="ctin">
+            </div>
+            <!--Bill Details-->
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <h5 class="text-center addr" id="billNo"><strong>Bill No: </strong></h5>
+                <h5 class="text-center addr" id="billDate"><strong>Bill Date: </strong></h5>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    <!--Bill Table Container-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1" id="firstDiv"><br><br></div>
+            <!--Bill Contents-->
+            <div class="col-md-11 col-xs-11">
+                <table class="table table-bordered" id="table1">
+                    <thead>
+                        <tr>
+                            <th class="text-center sno">S.No</th>
+                            <th class="text-center product">Particulars</th>
+                            <th class="text-center quantity">Quantity</th>
+                            <th class="text-center rate">Rate</th>
+                            <th class="text-center total">Amount</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!--Add Content Button-->
+        <div class="row">
+            <div class="col-md-9 col-xs-7 col-sm-7"></div>
+            <div class="col-md-3 col-xs-5 col-sm-5">
+                <button type="button" class="btn btn-success addButton" data-toggle="modal" data-target="#modal"><i class="fa fa-plus fa-fw"></i> Add Field</button>
+            </div>
+        </div>
+
+        <!--Add Content Modal-->
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!--Modal Close BUtton-->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="title">&times</span>
+                        </button>
+                        <!--Modal Heading-->
+                        <h5 class="modal-title text-center title"><i class="fa fa-plus fa-fw"></i>  Add Items</h5>
+                    </div>
+                    <div class="modal-body">
+                        <!--Product Type-->
+                        <div class="row">
+                            <div class="col-md-6 col-xs-6">
+                                <input type="radio" name="products" class="text-center" value="RCC Hume Pipe" id="radioOne" checked>  RCC Hume Pipe
+                            </div>
+                            <div class="col-md-6 col-xs-6">
+                                <input type="radio" name="products" class="text-center" value="Interlock Brick" id="radioTwo">  Interlock Brick
+                            </div>
+                        </div>
+                        <br><br>
+                        <!--Particulars list Container-->
+                        <div class="row">
+                            <div class="col-md-3 col-xs-6">
+                                <h5 class="addr">Particulars</h5>
+                            </div>
+                            <div class="col-md-9 col-xs-6">
+                                <!--List 1-->
+                                <select name="products1" class="form-control" id="list1">
+                                    <option value="150mm RCC Hume Pipe">150mm RCC Hume Pipe</option>
+                                    <option value="300mm RCC Hume pipe">300mm RCC Hume Pipe</option>
+                                    <option value="350mm RCC Hume Pipe">350mm RCC Hume Pipe</option>
+                                    <option value="450mm RCC Hume Pipe">450mm RCC Hume Pipe</option>
+                                    <option value="650mm RCC Hume Pipe">650mm RCC Hume Pipe</option>
+                                    <option value="950mm RCC Hume Pipe">950mm RCC Hume Pipe</option>
+                                    <option value="1000mm RCC Hume Pipe">1000mm RCC Hume Pipe</option>
+                                    <option value="1200mm RCC Hume Pipe">1200mm RCC Hume Pipe</option>
+                                </select>
+
+                                <!--List 2-->
+                                <select name="products2" class="form-control" id="list2">
+                                    <option value="80mm Interlock Brick">80mm Interlock Brick</option>
+                                    <option value="60mm Interlock Brick">60mm Interlock Brick</option>
+                                    <option value="80mm ZigZag Brick">80mm ZigZag Brick</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--Quantity Cintainer-->
+                        <div class="row">
+                            <div class="col-md-3 col-xs-6">
+                                <h5 class="addr">Quantity</h5>
+                            </div>
+                            <div class="col-md-9 col-xs-6">
+                                <input type="number" class="form-control" id="quantity">
+                            </div>
+                        </div>
+
+                        <!-- Rate Container-->
+                        <div class="row">
+                            <div class="col-md-3 col-xs-6">
+                                <h5 class="addr">Rate</h5>
+                            </div>
+                            <div class="col-md-9 col-xs-6">
+                                <input type="number" class="form-control" id="rate">
+                            </div>
+                        </div>
+
+                        <!--Delievery Distance Container-->
+                        <div class="row">
+                            <div class="col-md-3 col-xs-6">
+                                <h5 class="addr">Delievery Distance</h5>
+                            </div>
+                            <div class="col-md-9 col-xs-6">
+                                <select name="deleiveryOptions" class="form-control" id="distance">
+                                    <option value="less than 100KM">Less Than 100KM</option>
+                                    <option value="more than 100KM">More Than 100KM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Modal Footer container-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default addButton" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success addButton" id="addItem">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Add Content Modal-->
+        <br><br>
+
+        <!--Amount Container-->
+        <div class="row">
+            <div class="col-md-1"></div>
+            <!--Amount in Words Container-->
+            <div class="col-md-8 col-xs-8 c0l-sm-8">
+                <br><br>
+                <h5 class="addr" id="amountInWords"><strong>Amount in words: </strong></h5>
+            </div>
+
+            <!--Subtotal Table container-->
+            <div class="col-md-3 col-xs-4 col-sm-4">
+                <table class="table table-bordered" id="table2">
+                    <tr>
+                        <th class="text-center">Subtotal </th>
+                        <td class="text-center" id="subtotal">0</td>
+                    </tr>
+                    <tr>
+                        <th class="text-center" id="vatdisplay">VAT @  </th>
+                        <td class="text-center" id="vat"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Frieght</th>
+                        <td class="text-center" id="frieght"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Total</th>
+                        <td class="text-center" id="total"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--End of subtotal table container-->
+    <br><br><br>
+
+    <!--Generate bill button container-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11 col-xs-12">
+                <a href="" class="btn btn-success btn-lg" id="generateBill" target="_blank"><i class="fa fa-external-link fa-fw"></i>  Generate Bill</a>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</body>
+</html>

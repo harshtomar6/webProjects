@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo|Oleo+Script|Lobster|Architects+Daughter|Economica" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+var songsPath = ['songs/English/02.mp3','songs/English/01.mp3','songs/English/03.mp3','songs/English/04.mp3','songs/English/05.mp3','songs/Hindi/01.mp3','songs/Hindi/02.mp3','songs/Hindi/03.mp3'];
+
+var songsName = ['Sorry, Blame It On Me','Unknown title','Rise',"She's the One",'Sing for the moment','Hey Bhagwan','Aloo Chaat','Amplifier',];
+var count=0;
+
+$(document).ready(function(){
+	var height = window.innerHeight
+	|| document.documentElement.clientHeight
+	|| document.body.clientHeight;
+
+	//console.log(height);
+	$('#background').css('height',height+'px');
+
+	$(window).scroll(function(){
+		var scroll = $(window).scrollTop();
+		console.log(scroll);
+
+		if(scroll > 620){
+			$('#navigation').addClass('navbar-default');
+			$('#nav').css('color','darkcyan');
+			$('#nav2').css('color','darkcyan');
+			$('#nav3').css('color','darkcyan');
+		}
+		if(scroll < 620){
+			$('#navigation').removeClass('navbar-default');
+			$('#nav').css('color','white');
+			$('#nav2').css('color','white');
+			$('#nav3').css('color','white');
+		}
+	});
+
+	$('#searchBar').keyup(function(event){
+		var name = [];
+		var serachResult = [];
+
+		if(event.keyCode == 13){
+			var keyword =  $(this).val().toLowerCase();
+
+			for(var i=0;i<songsName.length;i++){
+				name.push(songsName[i].toLowerCase());
+			}
+
+			for(var i=0;i<name.length;i++){
+				if(name[i].indexOf(keyword) !=-1){
+					console.log('Match Found and INDEX = '+i);
+				}else{
+					console.log('match Not Found and INDEX = '+i);
+				}
+			}
+
+			$.get('songs.html',function(data,status){
+				alert('success');
+			});
+			//window.location.href = 'songs.html';
+		}
+	});
+
+	$('#mapContainer').hide();
+	$('.mapHeading').on('click',function(){
+		$('#mapContainer').slideToggle(500);
+	});
+
+	$('#pauseButton').on('click',playOrPause);
+});
+
+function generateSong(){
+	rand = Math.floor(Math.random()*7);
+
+	if(count==0){
+		audio = new Audio(songsPath[rand]);
+		$('#audioPlayer').css('visibility','visible');
+		$('source').attr('src',songsPath[rand]);
+		audio.load();
+		$('#listenNow').css('visibility','visible');
+		$('#songName').html(getSongName(rand));
+		audio.play();
+	}else{
+		audio.pause();
+		audio = new Audio(songsPath[rand]);
+		$('source').attr('src',songsPath[rand]);
+		audio.load();
+		$('#songName').html(getSongName(rand));
+		audio.play();
+	}
+
+	audio.addEventListener('loadeddata',function(){
+		var minutes = parseInt(parseInt(audio.duration)/60);
+		var seconds = parseInt(parseInt(audio.duration)%60);
+
+		if(minutes < 10 && seconds < 10)
+			$('#totalDuration').html('0'+minutes+':0'+seconds);
+		else
+			$('#totalDuration').html('0'+minutes+':'+seconds);
+	}, false);
+
+	setInterval(updatePlayer,1000);
+	count++;
+}
+
+function playOrPause(){
+	if(audio.paused){
+		audio.play();
+		$('#pauseButton').attr('src','images/pause.png');
+	}
+	else{
+		$('#pauseButton').attr('src','images/play.png');
+		audio.pause();
+	}
+}
+
+function getSongName(songIndex){
+	switch(songIndex){
+	case 0:
+		return songsName[0];
+	case 1:
+		return songsName[1];
+	case 2:
+		return songsName[2];
+	case 3:
+		return songsName[3];
+	case 4:
+		return songsName[4];
+	case 5:
+		return songsName[5];
+	case 6:
+		return songsName[6];
+	case 7:
+		return songsName[7];
+	}
+}
+
+function updatePlayer(){
+	var minutes = parseInt(parseInt(audio.currentTime)/60);
+	var seconds = parseInt(parseInt(audio.currentTime)%60);
+
+	if(minutes < 10 && seconds < 10)
+		$('#currentDuration').html('0'+minutes+':0'+seconds);
+	else
+		$('#currentDuration').html('0'+minutes+':'+seconds);
+	}
+</script>
+
+<style>
+
+.mapHeading{
+	cursor: pointer;
+}
+
+</style>
+
+</head>
+<body>
+<header class="navbar navbar-fixed-top" id="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavBar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button> 
+			<a href="#"><img src="images/logo.png" class="img-responsive" id="logo"></a>
+		</div>
+		<nav role="navigation" class="collapse navbar-collapse" id="myNavBar">
+		<ul class="nav navbar-nav">
+			<li><a id="nav" href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
+			<li><a id="nav2" href="songs.html"><i class="fa fa-music fa-fw"></i> Songs</a></li>
+			<!--<li><input type="text" placeholder="Search Songs" id="searchBar"></li>
+			<li><a href="#" id="followbutton"><i class="fa fa-globe fa-fw"></i> Connect</a></li>-->
+			<li><a id="nav3" href="aboutus.html"><i class="fa fa-users fa-fw"></i> About Us</a></li>
+		</ul>
+		</nav>
+	</div>
+</header>
+
+<div  class="container-fluid" id="background">
+	<br><br><br>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<input type="text" placeholder="Search Songs" id="searchBar">
+			<div class="row">
+				<div class="col-md-5 col-xs-4"></div>
+				<div class="col-md-4 col-xs-4">
+					<h2 id="topheading">OR</h2>
+				</div>
+				<div class="col-md-3 col-xs-4"></div>
+			</div>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-5 col-xs-2"></div>
+		<div class="col-md-4 col-xs-8">
+			<button type="button" id="listenButton" class="btn btn-primary" onclick="generateSong()"><i class="fa fa-headphones fa-fw"></i> Play Now</button>
+		</div>
+		<div class="col-md-3 col-xs-2"></div>
+	</div>
+</div>
+
+<!--Audio Player-->
+<div class="navbar-fixed-bottom" id="audioPlayer">
+	<br>
+	<div class="row">
+		<div class="col-md-3 col-xs-3">
+			<div class="row">
+				<div class="col-md-3 col-xs-3">
+					<img src="images/songicon.jpg" class="img-responsive" id="thumbnail">
+				</div>		
+				<div class="col-md-9 col-xs-9">
+					<h5 id="songName">Song Name</h5>
+					<p id="songDescription">Description about Song</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9 col-xs-9">
+			<div class="row">
+				<div class="col-md-2 col-xs-4" id="audioControls">
+					<img src="images/pause.png" class="img-responsive" id="pauseButton">
+				</div>
+				<div class="col-md-1 col-xs-1">
+					<br>
+					<p id="currentDuration">00:00</p>
+				</div>
+				<div class="col-md-8 col-xs-6" >
+					<br>
+					<div id="progressbar"></div>	
+				</div>
+				<div class="col-md-1 col-xs-1">
+					<br>
+					<p id="totalDuration"></p>
+				</div>
+			</div>
+		</div>
+		<audio id="listenNow">
+			<source src="" type="audio/mp3">
+		</audio>
+	</div>
+</div>
+
+<br><br><br>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 col-xs-12">
+			<img src="images/location.png" class="img-responsive" id="locationImage">
+		</div>
+		<div class="col-md-9">
+			<br><br>
+			<h2 id="heading" class="mapHeading">Find nearest Store</h2>
+			<p id="content">We are all over Bangalore. Find a store nearest to you</p>
+		</div>
+	</div>
+	<br>
+	<div class="row" id="mapContainer">
+		<div class="col-md-6 col-xs-12">
+			<iframe width="100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.221158324027!2d77.51204281482184!3d12.957695440865027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3e80ccb1a701%3A0xfcb387ddc586f5cf!2sVijay+nagar%2C+Stage+2%2C+Nagarbhavi%2C+Bengaluru%2C+Karnataka!5e0!3m2!1sen!2sin!4v1478195268386" frameborder="0" allowfullscreen="" style="border:0"></iframe>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<iframe width="100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15550.787270972365!2d77.53157562077553!3d12.991233212055553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3da2b2d16bbb%3A0x63ad6fc3882f2d67!2sBasaveshwar+Nagar%2C+Bengaluru%2C+Karnataka+560079!5e0!3m2!1sen!2sin!4v1478195486724" frameborder="0" allowfullscreen="" style="border:0"></iframe>
+		</div>
+	</div>
+	<br>
+	<div class="row">				
+		<div class="col-md-9">
+			<br><br>
+			<a href="songs.html"><h2 id="heading">Check Our Songs</h2></a>
+			<p id="content">We got a really cool collection of all time Hits. Listen Now</p>
+		</div>
+		<div class="col-md-3 col-xs-12">
+			<img src="images/musicicon.png" class="img-responsive" id="locationImage">
+		</div>
+	</div>
+	<br><br>
+	<div class="row">				
+		<div class="col-md-3 col-xs-12">
+			<img src="images/aboutus.png" class="img-responsive" id="locationImage">
+		</div>
+		<div class="col-md-9">
+			<br><br>
+			<a href="aboutus.html"><h2 id="heading">Know about us</h2></a>
+			<p id="content">Get information about us and other contact links</p>
+		</div>
+	</div>			
+</div>
+<br><br>
+<footer>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-5"></div>
+			<div class="col-md-4 col-xs-12">
+				<h3 id="bottomHeading">Follow Us At:-</h3>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-1 col-xs-2">
+				<a href="http://www.facebook.com" id="follow" target="_blank"><i class="fa fa-facebook fa-fw" id="follow"></i>  </a>
+			</div>
+			<div class="col-md-1 col-xs-2">
+				<a href="http://www.twitter.com" id="follow" target="_blank"><i class="fa fa-twitter fa-fw" id="follow"></i>  </a>
+			</div>
+			<div class="col-md-1 col-xs-2">
+				<a href="http://www.linkedin.com" id="follow" target="_blank"><i class="fa fa-linkedin fa-fw" id="follow"></i>  </a>
+			</div>
+			<div class="col-md-1 col-xs-2">
+				<a href="https://plus.google.com" id="follow" target="_blank"><i class="fa fa-google-plus fa-fw" id="follow"></i>  </a>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		<br><br>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-8">
+				<ul id="foot">
+					<li id="foot">Terms of use | </li>
+					<li id="foot">Privacy Policy | </li>
+					<li id="foot">Report an Issue</li>
+				</ul>
+			</div>
+		</div>
+	</div><br><br>
+</footer>
+</body>
+</html>

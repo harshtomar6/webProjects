@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo|Oleo+Script|Lobster|Architects+Daughter|Economica" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body{
+	/*background: url('http://hdimagesnew.com/wp-content/uploads/2015/11/Black-Abstract-Wallpaper-HD-8.jpg') fixed no-repeat;
+	background-size: cover;*/
+	background-color: #2a3b4c;
+}
+#heading{
+	color: white;
+	font-family: 'Exo';
+	font-size: 50px;
+	text-shadow: 2px 4px 5px rgb(0, 0, 0);
+}
+.searchBar{
+	width: 100%;
+	font-size: 30px;
+	font-family: 'Exo';
+	border-radius: 15px;
+	box-shadow: 2px 4px 5px rgb(0, 0, 0);
+	padding-left: 45px;
+}
+#searchIcon{
+	position: absolute;
+	z-index: 1;
+	left: 20px;
+	margin-top: 10px;
+	font-size: 30px;
+}
+.randomButton{
+	background-color: white;
+	color: #2a3b4c;
+	border-radius: 10px;
+	font-family:'Exo';
+	font-size: 20px;
+	border: 1px solid #2a3b4c;
+	box-shadow: 2px 4px 5px rgb(0, 0, 0);
+}
+.result{
+	background-color: lightgrey;
+	color: #2a3b4c;
+	font-family: 'Exo';
+	font-size: 24px;
+	padding: 10px 10px 5px 10px;
+	cursor: pointer;
+	border-radius: 10px;
+}
+.result:hover{
+	transform: scale(1.1);
+	transition: .2s;
+}
+#des{
+	font-size: 18px;
+	color: black;
+}
+ul{
+	list-style-type: none;
+	text-decoration: none;
+	padding: 0;
+}
+li{
+	text-decoration: none;
+	color: white;
+}
+a{
+	text-decoration: none;
+	color: #2a3b4c;
+}
+a:hover{
+	text-decoration: none;
+	color: #2a3b4c;
+}
+#foot{
+	color: white;
+	font-size: 16px;
+	font-family: 'Exo';
+	text-shadow: 2px 4px 4px rgb(0, 0, 0);
+}
+</style>
+<script>
+	$(document).ready(function(){
+		$('.randomButton').on('click',function(){
+			$(this).attr('href','https://en.wikipedia.org/wiki/Special:Random');
+		});
+
+		$('.searchBar').keyup(function(event){
+			var keyword = $(this).val();
+			if(event.keyCode == 13){
+				getSearchResults(keyword);
+			}
+		});
+	});
+
+	function getSearchResults(val){
+		var api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
+		var page='https://en.wikipedia.org/?curid=';
+
+		$.get(api+val,function(data){
+			var pages = data.query.pages;
+			//console.log(pages);
+			$('.list').empty();
+			for(var p in pages){
+				if(pages.hasOwnProperty(p)){
+					//console.log(pages[p].title);
+					$('.list').append('<div class="result"><li><a href="'+page+pages[p].pageid+'" target="_blank">'+pages[p].title+'<br><br><p id="des">'+pages[p].extract+'<p></a></li></div><br>');
+				}
+			}
+
+		},"jsonp");
+	}
+</script>
+</head>
+<body>
+	<div class="conatainer-fluid">
+		<br><br><br>
+		<div class="container">
+			<h3 class="text-center" id="heading">Wikipedia Viewer</h3> 
+		</div>
+		<br><br><br>
+	
+		<div class="row">
+			<div class="col-md-3 col-xs-1"></div>
+			<div class="col-md-6 col-xs-10">
+				<div>
+				<i class="fa fa-search" id="searchIcon"></i>
+				<input type="text" placeholder="Search Anything" class="searchBar">
+				</div>
+			</div>
+			<div class="col-md-3 col-xs-1"></div>
+		</div>
+		<br><br>
+		<div class="row">
+			<div class="col-md-5 col-xs-2"></div>
+			<div class="col-md-4 col-xs-8">
+				<a href="" class="btn randomButton" target="_blank">Random Article</a>
+			</div>
+			<div class="col-md-3 col-xs-2"></div>
+		</div>
+		<br><br>
+		<div class="row">
+			<div class="col-md-3 col-xs-1"></div>
+			<div class="col-md-6 col-xs-10">
+				<ul class="list">
+				</ul>
+			</div>
+			<div class="col-md-3 col-xs-1"></div>
+		</div>
+	</div>
+	<br><br>
+	<footer>
+		<h3 class="text-center" id="foot">Written and Coded by <a href="https://www.freecodecamp.com/harshtomar6" target="_blank" id="foot">Harsh Tomar</a></h3>
+	</footer>
+</body>
+</html>

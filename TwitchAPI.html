@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo|Oleo+Script|Lobster|Architects+Daughter|Economica" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+body{
+	background: url('twitch-background.jpg') fixed no-repeat;
+	background-size: cover;
+	/**/
+}
+.main{
+	box-shadow: 0 5px 10px 0 rgba(0,0,0,1), 0 5px 10px 0 rgba(0,0,0,0.2);
+}
+.tab{
+	background-color: #3e2561;
+	color: white;
+	border-right: 1px solid lightgrey;
+	cursor: pointer;
+	box-shadow: 2px 2px 2px rgb(0,0,0);
+}
+#pointer{
+  width: 0;
+  position: absolute;
+  border-top: 8px solid #3e2561;
+  border-left: 8px solid lightgrey;
+  border-right: 8px solid lightgrey;
+  z-index: 1;
+  margin-left: 9%;
+  transition: margin-left 0.3s; 
+}
+.heading{
+	color: white;
+	font-family: 'Economica';
+	font-size: 18px;
+}
+.selected{
+	font-weight: bold;
+	border-bottom: 1px solid #3e2561;
+}
+.s{
+	position: absolute;
+	z-index: 1;
+	left: 20px;
+	margin-top: 10px;
+	color: grey;
+}
+.search{
+	width: 100%;
+	border-radius: 20px;
+	font-family: 'Economica';
+	font-size: 20px;
+	padding-left: 30px;
+}
+.content{
+	background-color: lightgrey;
+	color: #3e2561;
+	opacity: 0.95;
+}
+#status{
+	color: grey;
+}
+#logo{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+.green{
+	color: green;
+}
+.grey{
+	color: grey;
+}
+ul{
+	padding-left: 5px;
+}
+#dn{
+	font-family: 'Economica';
+	font-size: 20px;
+}
+a{
+	text-decoration: none;
+	color: #3e2561;
+}
+a:hover{
+	text-decoration: none;
+	color: #3e2561;
+}
+#foot{
+	font-family: 'Economica';
+	color: white;
+	font-size: 24px;
+	text-shadow: 2px 4px 4px rgb(0, 0, 0);
+}
+</style>
+<script>
+	var streamers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+	var url='https://wind-bow.gomix.me/twitch-api/';
+	var page='https://www.twitch.tv/';
+	var onlineUsers=[],offlineUsers=[],allUsers=[];
+
+	$(document).ready(function(){		
+		
+		streamers.forEach(getData);
+
+		$('#tab1').on('click', function(){
+			$('.list').empty();
+			$('#pointer').css('margin-left', '9%');
+			allUsers.forEach(function(s){
+				if(s.status !== undefined){
+					$('.list').append('<hr><div class="row"><div class="col-md-3 col-xs-3"><img src="'+s.logo+'" class="img-responsive" id="logo"></div><div class="col-md-6 col-xs-6"><h5 id="dn"><a href="'+page+s.name+'" target="_blank">'+s.name+'</a></h5><p id="status">'+s.status+'</p></div><div class="col-md-3 col-xs-3"><i class="green fa fa-circle fw"></i></div></div>');	
+				}
+				else{
+					$('.list').append('<hr><div class="row"><div class="col-md-3 col-xs-3"><img src="'+s.logo+'" class="img-responsive" id="logo"></div><div class="col-md-6 col-xs-6"><h5 id="dn"><a href="'+page+s.name+'" target="_blank">'+s.name+'</a></h5></div><div class="col-md-3 col-xs-3"><i class="grey fa fa-circle fw"></i></div></div>');	
+				}
+			});
+		});
+
+		$('#tab2').on('click', function(){
+			$('.list').empty();
+			$('#pointer').css('margin-left', '42%');
+			onlineUsers.forEach(function(s){
+				$('.list').append('<hr><div class="row"><div class="col-md-3 col-xs-3"><img src="'+s.logo+'" class="img-responsive" id="logo"></div><div class="col-md-6 col-xs-6"><h5 id="dn"><a href="'+page+s.name+'" target="_blank">'+s.name+'</a></h5><p id="status">'+s.status+'</p></div><div class="col-md-3 col-xs-3"><i class="green fa fa-circle fw"></i></div></div>');
+			});
+		});
+
+		$('#tab3').on('click', function(){
+			$('.list').empty();
+			$('#pointer').css('margin-left', '75%');
+			offlineUsers.forEach(function(s){;
+				$('.list').append('<hr><div class="row"><div class="col-md-3 col-xs-3"><img src="'+s.logo+'" class="img-responsive" id="logo"></div><div class="col-md-6 col-xs-6"><h5 id="dn"><a href="'+page+s.name+'" target="_blank">'+s.name+'</a></h5></div><div class="col-md-3 col-xs-3"><i class="grey fa fa-circle fw"></i></div></div>');
+			});
+		});
+			
+	});
+
+	function getData(s){
+			
+		$.get(url+'streams/'+s, function(data){
+				//console.log(data);
+
+			if(data.stream!==null){
+				//console.log(data.stream);
+					
+				$.get(url+"users/"+s, function(data2){
+						//console.log(data2.logo);
+					onlineUsers.push({name : data2.display_name, logo : data2.logo, status : data.stream.channel.status});
+					allUsers.push({name: data2.display_name, logo: data2.logo, status: data.stream.channel.status});
+
+					$('.list').append('<hr><div class="row"><div class="col-md-3 col-xs-3"><img src="'+data2.logo+'" class="img-responsive" id="logo"></div><div class="col-md-6 col-xs-6"><h5 id="dn"><a href="'+page+data2.display_name+'" target="_blank">'+data2.display_name+'</a></h5><p id="status">'+data.stream.channel.status+'</p></div><div class="col-md-3 col-xs-3"><i class="green fa fa-circle fw"></i></div></div>');			
+					},"jsonp");
+			}
+			else{
+				$.get(url+"users/"+s, function(data3){
+						//console.log(data3.logo);
+					offlineUsers.push({name: data3.display_name, logo: data3.logo});
+					allUsers.push({name: data3.display_name, logo: data3.logo, status: undefined});
+
+					$('.list').append('<hr><div class="row"><div class="col-md-3 col-xs-3"><img src="'+data3.logo+'" class="img-responsive" id="logo"></div><div class="col-md-6 col-xs-6"><h5 id="dn"><a href="'+page+data3.display_name+'" target="_blank">'+data3.display_name+'</a></h5></div><div class="col-md-3 col-xs-3"><i class="grey fa fa-circle fw"></i></div></div>');			
+					},"jsonp");	
+			}
+		},"jsonp");
+				
+	}
+
+	function searchResult(){
+		var keyword = $('.search').val();
+
+		$('.list').empty();
+		allUsers.forEach(function(s){
+			if(s.name.toLowerCase().match(keyword)){
+				//console.log(s.name);
+				if(s.status !== undefined){
+					$('.list').append('<hr><div class="row"><div class="col-md-3 col-xs-3"><img src="'+s.logo+'" class="img-responsive" id="logo"></div><div class="col-md-6 col-xs-6"><h5 id="dn"><a href="'+page+s.name+'" target="_blank">'+s.name+'</a></h5><p id="status">'+s.status+'</p></div><div class="col-md-3 col-xs-3"><i class="green fa fa-circle fw"></i></div></div>');	
+				}
+				else{
+					$('.list').append('<hr><div class="row"><div class="col-md-3 col-xs-3"><img src="'+s.logo+'" class="img-responsive" id="logo"></div><div class="col-md-6 col-xs-6"><h5 id="dn"><a href="'+page+s.name+'" target="_blank">'+s.name+'</a></h5></div><div class="col-md-3 col-xs-3"><i class="grey fa fa-circle fw"></i></div></div>');	
+				}
+			}
+		});
+	}
+</script>
+</head>
+<body>
+<div class="container">
+	<br><br><br><br>
+	<div class="row">
+	<div class="col-md-4 col-xs-1"></div>
+	<div class="col-md-4 col-xs-10 main">
+		<div class="row">
+			<div id="tab1" class="col-md-4 col-xs-4 tab selected">
+				<h5 class="text-center heading ">All</h5>
+			</div>
+			<div id="tab2" class="col-md-4 col-xs-4 tab">
+				<h5 class="text-center heading">Online</h5>
+			</div>
+			<div id="tab3" class="col-md-4 col-xs-4 tab">
+				<h5 class="text-center heading">Offline</h5>
+			</div>
+		</div>
+		<div id="pointer"></div>
+		<div class="row content">
+			<div class="col-md-1 col-xs-1"></div>
+			<div class="col-md-10 col-xs-10">
+				<br>
+				<div id="s">
+				<i class="fa fa-search s"></i>
+				<input type="text" placeholder="Search" class="search" oninput="searchResult()">
+				</div>
+			</div>
+			<div class="col-md-1 col-xs-1"></div>
+		</div>
+		<div class="row content">
+			<ul class="list">
+			</ul>
+		</div>
+	</div>
+	<div class="col-md-4 col-xs-1"></div>
+	</div>	
+</div>
+<br><br><br>
+<footer>
+	<h5 class="text-center" id="foot">Written and Coded by<a id="foot" href="https://www.freecodecamp.com/harshtomar6" target="_blank"> Harsh Tomar</a></h5>
+</footer>
+</body>
+</html>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DRA-Infratech</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/animate.css">
+<link rel="stylesheet" type="text/css" href="css/mdb.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+   $(window).scroll(function(){
+      var sticky = $('.sticky'),
+          scroll = $(window).scrollTop();
+
+      if (scroll >= 35) sticky.addClass('wrap-all-shrink');
+      else sticky.removeClass('wrap-all-shrink');
+    });
+</script>
+<script type="text/javascript">
+   $(document).ready(function(){
+      if ( $(window).width() > 768) {      
+           //Add your JavaScript for Large screens here
+        $('li, .subdrop-li-btn').hover(function(){
+          $('.sub-ul-cls-js', this).stop().slideToggle(100);
+        });
+        
+      } 
+      else {
+        //Add your javascript for small screens here 
+       $('li, .subdrop-li-btn').click(function(){
+           var id = $(this).attr('id');
+           $('#'+id+'-li').stop().slideToggle(200);
+         });
+
+        
+      }
+   });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.side-menu-btn').click(function(){
+       $('.ul-main').toggleClass('row-nav-list, ul-main-toggle')
+    });
+  });
+</script>
+</head>
+<body>
+<div class="wrap-all sticky"  >
+ <!--  <div class="header-container-1">
+       <div class="row-wrapper-1">
+        <div class="col-left-top">
+           <div class="top-left-ul">
+             <span><i class="fa fa-phone"></i>&nbsp;Call us 1900-098</span>
+           </div> -->
+        <!-- </div> --><!-- col-left-top -->
+        <!-- break col -->
+        <!-- <div class="col-right-top">
+           <div class="top-right-ul">
+              <span class="hidden-xs"><i class="fa fa-phone"></i>&nbsp; 1900-0981110</span>
+              <a href=""><span><i class="fa fa-pen"></i>&nbsp;Sign Up</span></a>
+              <a href=""><span><i class="fa fa-pen"></i>&nbsp; Log In</span></a>
+           </div>
+        </div> --><!-- col-left-top -->
+        <!-- break col -->
+      <!-- </div> --><!-- row-wrapper-1 -->
+  <!-- </div> --><!--header-container-1-->
+   <!-- ===============row container break============= -->
+  <div  class="header-container-2">
+     <div class="row-wrapper-2 ">
+        <div class="col-left-menu" data-wow-delay="0.2s">
+           <a href="solar.html"><img src="img/logo.png"></a>
+        </div><!-- col-left-men --> 
+        <!-- break col menu -->
+        <div class="col-center-menu">
+           <!-- ==========NAV MENU LIST START============= -->
+              <div class="nav-menu-list" >
+                <div class="row-nav-list">
+                   <div class="my-nav " data-wow-delay="0.2s">
+                    <ul class="ul-main" style="color: #111;">
+                       <!-- <li><a href="solar.html"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li> -->
+                       <li><a href="#about"  class="js-section-scroll"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>About Us<span class="caret"></span></a>
+                        <ul id="sub-ul-1-li" class="sub-ul sub-ul-cls-js">
+                          <li><a href="#about"  class="js-section-scroll">Company Profile</a></li>
+                          <li><a  class="subdrop-li-btn  js-section-scroll" href="#service">What We Do</a></li>
+                          <!-- <li><a href="#">Technical Service</a></li> -->
+                        </ul>
+                      </li>
+                       <li><a href="#0" id="sub-ul-1"><i class="fa fa-list-alt" aria-hidden="true"></i>Services<span class="caret"></span></a>
+                        <ul id="sub-ul-1-li" class="sub-ul sub-ul-cls-js">
+                          <li><a href="off-grid.html">OFF-Grid Solar Power Plant</a></li>
+                          <li><a href="on-grid.html">ON-Grid Solar Power plant</a></li>
+                          <li><a href="hybrid.html">Hybrid Solar Power Plant</a></li>
+                          <!-- <li><a href="#">Technical Service</a></li> -->
+                        </ul>
+                       </li>
+                      <!--  <li class="li-bg-color"><a  class="subdrop-li-btn  js-section-scroll" href="#service"><i class="fa fa-file-text-o" aria-hidden="true"></i>What We Do</a> -->
+                          <!--  <ul id="sub-ul-1-li" class="sub-ul sub-ul-cls-js">
+                             <li><a href="#">Maintenance & Repair</a></li>
+                             <li><a href="#">Offshore Wind Energy</a></li>
+                             <li><a href="#">Remote Monitoring</a></li>
+                             <li><a href="#">Technical Service</a></li>
+                           </ul> -->
+                       </li>
+                       <li><a href="#0"  class="js-section-scroll"><i class="fa fa-cog" aria-hidden="true"></i>Career</a></li> 
+                      <li><a href="#team"  class="js-section-scroll"><i class="fa fa-users" aria-hidden="true"></i>Team</a></li>
+                        <!-- <li class="li-bg-color"><a id="sub-ul-2" class="subdrop-li-btn  js-section-scroll" href="#"><i class="fa fa-angle-down"></i>&nbsp;Portfolio</a> -->
+                          <!--  <ul id="sub-ul-2-li" class="sub-ul sub-ul-cls-js">
+                             <li><a href="#">Link 1</a></li>
+                             <li><a href="#">Link 2</a></li>
+                             
+                           </ul>
+                       </li> -->
+                       <li><a href="#form" class="js-section-scroll"><i class="fa fa-phone" aria-hidden="true"></i>Contact Us</a></li><li  class="solar-calc"><a href="#0" class=""><i class="fa fa-calculator" aria-hidden="true"></i>Solar Calculator</a></li>
+                     </ul>
+                    </div>
+                </div><!-- row-nav-list -->
+              </div><!-- nav-menu-list -->
+              <!-- ==========NAV MENU LIST END============= -->
+<!-- =========LIST NAV MENU=========== -->
+        </div><!-- col-center-men --> 
+        <!-- break col menu -->
+        <div class="col-right-menu">
+            <button class="visible-xs side-menu-btn " style="width: 40px;"><a href="#"><i class="fa fa-list"></i></a></button>
+        </div><!-- col-right-men --> 
+        <!-- break col menu -->
+    </div><!-- row-wrapper-2 -->
+  </div><!-- header-container-2 -->
+   <!-- ===============row container break============= -->
+</div><!-- wrap-all -->
+
+<!-- =========LIST NAV MENU=========== -->
+
+<div class="col-md-24  col-lg-24 col-xs-24 col-sm-24  container-fluid  banner-nopadding"><!-- main slider -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+    <!-- Indicators -->
+   <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/banner3.jpg" alt="Los Angeles" style="width:100%;"  class="img-responsive">
+        <div class="banner-text">
+          <div class="container">
+            <div class="slider-caption  col-xs-24">
+                <caption>
+                  <h1 class="wow fadeInDown" data-wow-delay="1.2s">OFF-Grid Solar Plant</h1>
+                  <p class="wow fadeInDown" data-wow-delay="1.4s">Off-Grid system is a Battery based Solar Power Plant will supply electricity from Solar Panels.<br> In the day time solar will run the connected load and balance energy storage..</p>
+                  <div class="readmore-btn" style="width: 100%;float: left;margin-top: 20px;">
+                    <a href="http://digitalwebdevelopers.net/dra-infratech/off-grid.html" type="submit" class="slider-btn  wow fadeInDown" data-wow-delay="1.6s">Read More</a>
+                  </div>
+                </caption>
+            </div>
+          </div>
+      </div>
+      </div>
+ 
+      <div class="item">
+         <img src="img/banner2.jpg" alt="Los Angeles" style="width:100%;"  class="img-responsive">
+        <div class="banner-text">
+          <div class="container">
+            <div class="slider-caption">
+                <caption>
+                  <h1 class="wow fadeInDown" data-wow-delay="1.2s">ON-Grid Solar Plant</h1>
+                  <p class="wow fadeInDown" data-wow-delay="1.4s">The grid connect inverter converts the DC electricity produced by the solar panels into AC electricity, <br>which can be used by the home appliances. </p>
+                   <div class="readmore-btn" style="width: 100%;float: left;margin-top: 20px;">
+                    <a href="http://digitalwebdevelopers.net/dra-infratech/on-grid.html" type="submit" class="slider-btn  wow fadeInDown" data-wow-delay="1.6s">Read More</a>
+                  </div>
+                </caption>
+            </div>
+          </div>
+      </div>
+      </div>
+    
+      <div class="item">
+        <img src="img/banner4.jpg" alt="Los Angeles" style="width:100%;" class="img-responsive">
+        <div class="banner-text">
+          <div class="container">
+            <div class="slider-caption">
+                <caption>
+                  <h1 class="wow fadeInDown" data-wow-delay="1.2s">Hybrid Solar Plant</h1>
+                  <p class="wow fadeInDown" data-wow-delay="1.4s">A Hybrid Solar Power Plant is a combination of On-Grid  and Off-Grid Solar System.It is a new form of grid-tied <br> system with battery bank having the ability to feed the surplus electricity to the Govt. </p>
+                   <div class="readmore-btn" style="width: 100%;float: left;margin-top: 20px;">
+                    <a href="http://digitalwebdevelopers.net/dra-infratech/hybrid.html" type="submit" class="slider-btn  wow fadeInDown" data-wow-delay="1.6s">Read More</a>
+                  </div>
+                </caption>
+            </div>
+          </div>
+        </div>
+      </div>
+<!--       <div class="item">
+        <img src="img/banner2.jpg" alt="Los Angeles" style="width:100%;"  class="img-responsive">
+        <div class="banner-text">
+          <div class="container">
+            <div class="slider-caption">
+                <caption>
+                  <h1  class="wow fadeInDown" data-wow-delay="1.2s">Renewable Energy</h1>
+                  <p class="wow fadeInDown" data-wow-delay="1.4s">A business, also known as an enterprise, agency, or a firm,<br> is an entity involved in the provision of goods, services.</p>
+                  <button  type="submit" class="slider-btn  wow fadeInDown" data-wow-delay="1.6s">Learn More</button>
+                </caption>
+            </div>
+          </div>
+      </div>
+    </div>  -->
+
+    <!-- Left and right controls -->
+     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div> 
+</div>
+<!-- MAIN SLIDER-->
+
+<section  class="whatweare"  id="about"><!-- what we are -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-24 col-md-12 col-sm-12" style="background-color: #ff395d; color: #fff;height: 100%;padding: 10%">
+        <div class="about-title wow fadeInLeft" style="width: 100%;float: left;padding-bottom: 40px;">
+        <h1 class="section-heading" style="color: #fff">Company Profile</h1>
+        <div class="solar-icon">
+          <img src="img/solar-energy-white.png">
+        </div>
+        </div>  
+      </div>
+      <div class="col-xs-24 col-md-12 col-sm-12">
+        <div class="who-we-are-text  who-we-padding  wow fadeInRight" data-wow-delay="0.6s">
+          <p>DRA Infratech solar is a recognized and fastest growing company in the domain of solar energy. We design, build and commission off-grid and Grid-tied solar energy plants suited for a diverse profile of customers ranging from Institutional to commercial and residential. We are known for our high quality services and comprehensive EPC solutions.<br>
+          We envisage every household and industry with available roof space use the same for its power requirements, thus reducing the load on the grid and contributing to a greener and far less polluted environment for future generations.
+          </p>
+        </div>  
+      </div>
+      
+    </div>
+  </div>
+</section><!-- what we are -->
+
+
+<section class="serivce-section   what-we-do"  id="service"><!-- what we do -->
+  <div class="col-lg-24  col-md-24 col-sm-24">
+    <div class="container">
+      <div class="row">
+        <div class="what-we-text">
+          <h1 class="section-heading">What we do</h1>
+            <div class="solar-icon">
+              <img src="img/solar-energy-white.png">
+            </div>
+          </div>
+          <div class="service1  wow fadeInDown" data-wow-delay="0.6s">
+            <div class="col-md-8  col-lg-8  col-sm-8 col-md-offset-0">
+              <div class="service-image">
+                <img src="img/svg-icon/site-survey.svg"  class="img-responsive">
+              </div>
+                <h3 style="text-align: center;color:#fff;font-size: 20px;">Site Survey</h3>
+            </div>
+            <div class="col-md-8  col-lg-8  col-sm-8">
+              <div class="service-image">
+                <img src="img/svg-icon/solar-installation.svg"  class="img-responsive">
+              </div>
+              <h3 style="text-align: center;color:#fff;font-size: 20px;">Installation</h3>
+              </div>
+            <div class="col-md-8  col-lg-8  col-sm-8">
+              <div class="service-image">
+                <img src="img/svg-icon/solar-energy.svg"  class="img-responsive">
+              </div>
+              <h3 style="text-align: center;color:#fff;font-size: 20px;">System Design</h3>
+              </div>
+          </div>
+       </div>
+    </div>
+  </div>
+  <div class="col-lg-24  col-md-24 col-sm-24">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="service2  wow fadeInDown" data-wow-delay="0.8s">
+          <div class="col-md-6  col-lg-6  col-sm-6">
+            <div class="service-image">
+                <img src="img/svg-icon/solar-maintanance.svg"  class="img-responsive">
+              </div>
+              <h3 style="text-align: center;color:#fff;font-size: 20px;">Monitoring & Maintenance</h3>
+           </div>
+          <div class="col-md-6  col-lg-6  col-sm-6">
+            <div class="service-image">
+                <img src="img/svg-icon/permission-approval.svg"  class="img-responsive">
+              </div>
+              <h3 style="text-align: center;color:#fff;font-size: 20px;">Inspection & Commissioning</h3>
+           </div>
+          <div class="col-md-6  col-lg-6  col-sm-6">
+            <div class="service-image">
+                <img src="img/svg-icon/utility-connection.svg"  class="img-responsive">
+              </div>
+              <h3 style="text-align: center;color:#fff;font-size: 20px;">Utility Interconnection</h3>
+           </div>
+          <div class="col-md-6  col-lg-6  col-sm-6">
+            <div class="service-image">
+                <img src="img/svg-icon/final-inspection.svg"  class="img-responsive">
+              </div>
+              <h3 style="text-align: center;color:#fff;font-size: 20px;">Permission & Approvals</h3>
+           </div>
+        </div>
+       </div>
+    </div>
+  </div>
+</section><!-- what-we-do -->
+
+<section  class="our-team"  id="team"><!-- our-team -->
+  <div class="row">
+    <div class="col-xs-24 col-md-12 col-sm-12 " style="background-color: #ff395d; color: #fff;height: 100%;padding: 10%">
+      <div class="our-team-text">
+        <h1 class="section-heading">Our Team</h1>
+          <div class="solar-icon">
+            <img src="img/solar-energy2.png">
+          </div>
+      </div>
+    </div>
+      <div class="col-xs-24 col-md-12 col-sm-12">
+        <div class="col-md-12">
+          <div class="overlay-effect  wow fadeInRight" data-wow-delay="0.8s">
+            <img src="img/our-team/1.jpg" alt="Avatar" class="image   img-responsive">
+              <div class="overlay">
+                  <div class="text">
+                  <span style="font-size:18px;font-weight: 600;">Mr. Jacob</span><br>
+                  <span style="font-size:14px;font-weight: 600;">Founder</span>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="overlay-effect  wow fadeInRight" data-wow-delay="0.6s">
+            <img src="img/our-team/4.jpg" alt="Avatar" class="image   img-responsive">
+              <div class="overlay">
+                  <div class="text">
+                     <span style="font-size:18px;font-weight: 600;">Ms. Angela</span><br>
+                      <span style="font-size:14px;font-weight: 600;">Director</span>
+                   </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="overlay-effect  wow fadeInRight" data-wow-delay="0.4s">
+            <img src="img/our-team/3.jpg" alt="Avatar" class="image   img-responsive">
+              <div class="overlay">
+                  <div class="text">
+                      <span style="font-size:18px;font-weight: 600;">Mr. Jacob</span><br>
+                      <span style="font-size:14px;font-weight: 600;">CEO</span>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="overlay-effect  wow fadeInRight" data-wow-delay="0.2s">
+            <img src="img/our-team/5.jpg" alt="Avatar" class="image   img-responsive">
+              <div class="overlay">
+                  <div class="text">
+                      <span style="font-size:18px;font-weight: 600;">Ms. Selena</span><br>
+                      <span style="font-size:14px;font-weight: 600;">Hr manager</span>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section><!-- our-team-end -->
+
+
+<!-- contact-us -->
+<section class="contact-us">
+  <div class="col-md-24  col-lg-24  col-sm-24">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-8  col-lg-8  col-sm-8  right-border">
+          <div class="contact-us-div wow fadeInDown" data-wow-delay="0.4s">
+             <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <h2>Contact Us</h2>
+              <p>B-10 3rd floor, Shankar Garden, Vikaspuri, Pincode-110058, New Delhi-18(INDIA) </p>
+              <p></p>
+          </div>
+        </div> -->
+        <div class="col-md-12  col-lg-12  col-sm-12  right-border">
+          <div class="contact-us-div wow fadeInDown" data-wow-delay="0.6s">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <h2>Email Us</h2>
+              <p>info@rdainfratecg.com<br>infratech@gmail.com</p>
+          </div>
+        </div>
+        <div class="col-md-12  col-lg-12  col-sm-12">
+          <div class="contact-us-div  wow fadeInDown" data-wow-delay="0.8s">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <h2>Call Us</h2>
+              <p>+91-99999999<br>011-222222</p>
+              <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-us" style="border-top: 1px solid #565656;">
+  <div class="col-md-24  col-lg-24  col-sm-24">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12  col-lg-12  col-sm-12  right-border">
+          <div class="contact-us-div wow fadeInDown" data-wow-delay="0.4s">
+             <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <h2>Delhi Address</h2>
+              <p style="margin-bottom: 5px;">B-10 3rd floor, Shankar Garden, Vikaspuri, Pincode-110058, New Delhi-18(INDIA) </p>
+             <div class="map-btn">
+                <a href="#0" class="location-btn" data-toggle="modal" data-target="#myModal">How to Reach Us</a>
+                 <!-- Modal -->
+                  <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                    
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <!-- <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Modal Header</h4>
+                        </div> -->
+                        <div class="modal-body">
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.015678698408!2d77.07011581445651!3d28.6292921909798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d04c25076f0f1%3A0x81c3807ade3a0266!2sShankar+Garden%2C+Vikaspuri%2C+Delhi%2C+110018!5e0!3m2!1sen!2sin!4v1514961826605" width="967" height="355" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                        <!-- <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div> -->
+                      </div>
+                      
+                    </div>
+                  </div>
+             </div>
+          </div>
+        </div>
+        <!-- modal-2 -->
+       <div class="col-md-12  col-lg-12  col-sm-12">
+          <div class="contact-us-div wow fadeInDown" data-wow-delay="0.4s">
+             <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <h2>Etawah Address</h2>
+              <p style="margin-bottom: 5px;">B-10 3rd floor, Shankar Garden, Vikaspuri, Pincode-110058, New Delhi-18(INDIA) </p>
+             <div class="map-btn">
+                <a href="#0" class="location-btn" data-toggle="modal" data-target="#myModal">How to Reach Us</a>
+                 <!-- Modal -->
+                  <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                    
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <!-- <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Modal Header</h4>
+                        </div> -->
+                        <div class="modal-body">
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.015678698408!2d77.07011581445651!3d28.6292921909798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d04c25076f0f1%3A0x81c3807ade3a0266!2sShankar+Garden%2C+Vikaspuri%2C+Delhi%2C+110018!5e0!3m2!1sen!2sin!4v1514961826605" width="967" height="355" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                        <!-- <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div> -->
+                      </div>
+                      
+                    </div>
+                  </div>
+             </div>
+          </div>
+        </div>
+        <!-- <div class="col-md-8  col-lg-8  col-sm-8">
+          <div class="contact-us-div  wow fadeInDown" data-wow-delay="0.8s">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <h2>Call Us</h2>
+              <p>+91-99999999<br>011-222222</p>
+              <p></p>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- contact us- -->
+
+<!-- get in touch -->
+<section class="get-in-touch"  id="form">
+  <div class="col-md-24  col-lg-24  col-sm-24">
+    <div class="container">
+      <div class="row">
+        <div class="getin-text">
+            <h1 class="section-heading">Get In Touch</h1>
+          <div class="solar-icon">
+            <img src="img/solar-energy2.png">
+          </div>
+        </div>
+        <div class="contact-form">
+         <div class="row">
+           <div class="col-md-12 wow fadeInLeft" data-wow-delay="0.4s">
+              <input type="Name" name="Fname"  placeholder="First Name:">
+              <input type="" name="fname"  placeholder="Email Id:">
+           </div>
+            <div class="col-md-12  wow fadeInRight" data-wow-delay="0.4s">
+              <input type="Name" name="lname"  placeholder="Last Name:">
+              <input type="" name="quantity" min="0" max="9" placeholder="Contact No:">
+           </div>
+           <div class="col-md-24  col-lg-24 col-sm-24  wow fadeInUp" data-wow-delay="0.6s">
+              <textarea  placeholder="Message.."></textarea>
+                <div class="send-btn  wow bounceIn" data-wow-delay="0.8s">
+                  <button class="send-msg">Send Message</button>
+                </div>
+            </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- get in touch section end -->
+
+<!--Our-Client start-->
+<section class="our-client">
+  <div class="col-md-24  col-lg-24  col-sm-24  col-xs-24">
+    <div class="row">
+      <div class="container">
+        <div class="our-client-text">
+        <h1 class="section-heading" style="text-align: center;">Solar Brands</h1>
+          <div class="solar-icon">
+            <img src="img/solar-energy2.png">
+          </div>
+        </div>
+        <div class="col-md-4   col-lg-4  col-sm-4  col-xs-12  well  well-sm  wow fadeInLeft" data-wow-delay="0.12s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+          <img src="img/client/client-1.jpg"  alt="client"  class="img-responsive">
+        </div>
+        <div class="col-md-4   col-lg-4  col-sm-4  col-xs-12  well  well-sm  wow fadeInLeft" data-wow-delay="0.12s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+          <img src="img/client/client-2.jpg"  alt="client"  class="img-responsive">
+        </div>
+        <div class="col-md-4   col-lg-4  col-sm-4  col-xs-12  well  well-sm  wow fadeInLeft" data-wow-delay="0.12s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+          <img src="img/client/client-3.jpg"  alt="client"  class="img-responsive">
+        </div>
+        <div class="col-md-4   col-lg-4  col-sm-4  col-xs-12  well  well-sm  wow fadeInLeft" data-wow-delay="0.12s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+          <img src="img/client/client-4.jpg"  alt="client"  class="img-responsive">
+        </div>
+        <div class="col-md-4   col-lg-4  col-sm-4  col-xs-12  well  well-sm  wow fadeInLeft" data-wow-delay="0.12s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+          <img src="img/client/client-5.jpg"  alt="client"  class="img-responsive">
+        </div>
+        <div class="col-md-4   col-lg-4  col-sm-4  col-xs-12  well  well-sm wow fadeInLeft" data-wow-delay="0.12s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+          <img src="img/client/client-6.jpg"  alt="client"  class="img-responsive">
+        </div>
+
+        <div class="col-md-4   col-lg-4  col-sm-4  col-xs-12  well  well-sm  wow fadeInRight" data-wow-delay="0.12s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInRight;">
+          <img src="img/client/client-7.jpg"  alt="client"  class="img-responsive">
+        </div>
+        <div class="col-md-4   col-lg-4  col-sm-4  col-xs-12  well  well-sm  wow fadeInRight" data-wow-delay="0.12s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInRight;">
+          <img src="img/client/client-8.jpg"  alt="client"  class="img-responsive">
+        </div>
+        <div class="col-md-4   col-lg-4  col-sm-4  col-xs-12  well  well-sm  wow fadeInRight" data-wow-delay="0.12s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInRight;">
+          <img src="img/client/client-9.jpg"  alt="client"  class="img-responsive">
+        </div>
+        <div class="col-md-4   col-lg-4  col-sm-4  col-xs-12  well  well-sm  wow fadeInRight" data-wow-delay="0.12s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInRight;">
+          <img src="img/client/client-10.jpg"  alt="client"  class="img-responsive">
+        </div>
+        <div class="col-md-4   col-lg-4  col-sm-4  col-xs-12  well  well-sm  wow fadeInRight" data-wow-delay="0.12s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInRight;">
+          <img src="img/client/client11.jpg"  alt="client"  class="img-responsive">
+        </div>
+        <div class="col-md-4   col-lg-4  col-sm-4  col-xs-12  well  well-sm  wow fadeInRight" data-wow-delay="0.12s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInRight;">
+          <img src="img/client/client12.jpg"  alt="client"  class="img-responsive">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Our-Client end-->
+
+<!-- footer-section -->
+<section class="footer">
+  <div class="col-md-24  col-sm-24 col-lg-24">
+    <div class="container">
+      <div class="row">
+        <div class="footer-logo">
+          <img src="img/logo-white.png"  alt="footer.logo"  class="img-responsive">
+        </div>
+        <div class="footer-inner">
+          <div class="col-md-24  col-lg-24 col-sm-24  wow fadeInLeft" data-wow-delay="0.8s">
+            <ul>
+              <li><a href="solar.html">Home</a></li> 
+              <li><a href="#about" class="js-section-scroll">Company Profile</a></li>
+              <li><a href="#service" class="js-section-scroll">What We Do</a></li>
+              <li><a href="#0" class="js-section-scroll">Service</a></li>
+              <li><a href="#0" class="js-section-scroll">Career</a></li>
+              <li><a href="#team" class="js-section-scroll">Team</a></li>
+              <li><a href="#form" class="js-section-scroll">Contact Us</a></li>
+              <li><a href="#form" class="js-section-scroll">Solar Calculator</a></li>
+            </ul>
+        </div>
+        <!-- <div class="col-md-12  col-lg-12 col-sm-12  wow fadeInRight" data-wow-delay="0.8s">
+            <ul class="social-media  pull-right">
+              <li class="social-icon"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+              <li class="social-icon"><a href="https://plus.google.com/discover" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+              <li class="social-icon"><a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+              <li class="social-icon"><a href="https://in.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            </ul>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- footer-section -->
+
+<section  class="bottom-footer"><!-- bottom-footer -->
+  <div class="col-md-24  col-sm-24  col-lg-24     wow fadeInUp" data-wow-delay="0.6s">
+    <div class="container">
+     <p style="text-align: center;color: #fff;margin-bottom: 0px;">Copyright © 2017 All right Reserved by Digital Web Developers</p>
+    </div>
+  </div>
+</section><!-- bottom footer -->
+
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<script type="text/javascript" src="js/tether.min.js"></script>
+<script type="text/javascript">
+  $('.js-section-scroll').on('click', function(e) {
+  e.preventDefault();
+  var section = $(this).attr('href').substr($(this).attr('href').indexOf('#'));
+  var $section = $(section);
+
+  $('html, body').animate({
+    scrollTop: $section.offset().top + 'px'
+  }, 1000);
+});
+</script>
+
+<script type="text/javascript">
+  new WOW().init();
+</script>
+</body>
+</html>

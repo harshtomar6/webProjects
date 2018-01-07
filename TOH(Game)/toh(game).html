@@ -1,0 +1,44 @@
+<!Doctype html>
+<html>
+<head>
+<title>Play | Tower Of Hanoi</title>
+<meta charset="utf">
+<style>
+canvas{
+	background-color: grey;
+	width:1320px;
+	height:620px;
+}
+</style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script type="text/javascript">
+
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext('2d');
+
+	ctx.fillStyle = "black";
+	ctx.fillRect(100,50,2,40);
+
+	ctx.fillStyle = "black";
+	ctx.fillRect(150,50,2,40);
+
+	ctx.fillStyle = "black";
+	ctx.fillRect(200,50,2,40);
+
+	ctx.fillStyle = "yellow";
+	ctx.fillRect(98,76,6,4);
+
+	ctx.fillStyle = "green";
+	ctx.fillRect(97,80,8,4);
+
+	ctx.fillStyle = "red";
+	ctx.fillRect(96,84,10,4);
+
+	ctx.fillStyle = "blue";
+	ctx.fillRect(95,88,12,4);
+
+</script>
+</body>
+</html>

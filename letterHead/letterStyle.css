@@ -1,0 +1,121 @@
+@media print {
+	body {-webkit-print-color-adjust: exact;}
+}
+
+html, body{
+	padding: 0;
+	margin: 0;
+}
+
+h1{
+	padding: 0;
+	margin: 0;
+}
+
+h4{
+	padding: 0;
+	margin: 0;
+}
+
+.container{
+	
+}
+
+.row{
+	display: flex;
+	justify-content: space-between;
+}
+
+.grid-row{
+	display: grid;
+	grid-template-columns: 25% 75%;
+}
+
+.topDiv{
+	padding-left: 40px;
+}
+
+.top{
+	color: darkgreen !important;
+	font-weight: bold;
+}
+
+.logo{
+	width: 120px;
+	height: 120px;
+}
+
+.om{
+	width: 50px;
+	height: 50px;
+	margin-left: 55px;
+}
+
+.main{
+	font-size: 42px;
+	font-family: "Kanit";
+	font-weight: bold;
+	color: #B00B0B !important;
+}
+
+.sub{
+	background-color: darkgreen !important;
+	color: white !important;
+	font-family: "Satisfy";
+	margin-bottom: 15px;
+	font-size: 16px;
+	margin-left: 220px;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.text{
+	color: darkgreen !important;
+	margin-top: 10px;
+}
+
+.factory{
+	font-family: "Risque";
+	color: darkgreen !important;
+	margin-top: 10px;
+}
+
+.addr{
+	margin-top:10px;
+	color: darkgreen !important;	
+}
+
+.bottom{	
+	position: relative;
+	float: right;
+	top: -80px;
+}
+
+.bottom-wrap{
+	margin-top: 80px;
+}
+
+.rule{
+	background-color: darkgreen;
+	height: 8px;
+	border-bottom: 2px solid red;
+	margin-bottom: 10px;
+}
+
+.ref{
+		color: #B00B0B !important;
+		margin: 10px 0 0 10px;
+		font-family: "Lobster";
+	}
+	.date{
+		color: #B00B0B !important;
+		margin: 10px 0 0 200px;
+		font-family: "Lobster";	
+	}
+	.head{
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	.content{
+		padding: 50px 30px 30px 30px;
+	}

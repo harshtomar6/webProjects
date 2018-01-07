@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo|Oleo+Script|Lobster|Architects+Daughter|Economica|Dancing+Script" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body{
+	background: radial-gradient(#de2626, #e80f5f);
+}
+#main{
+	position: relative;
+	cursor: pointer;
+	width: 80%;
+	height: 80%;
+}
+#info{
+	font-family: 'Dancing Script';
+	font-size: 40px;
+	color: white;
+	position: relative;
+	left: -1000px;
+}
+#foot{
+	position: relative;
+	display: none;
+	font-family: 'Dancing Script';
+	font-size: 40px;
+	color: white;
+}
+#message{
+	position: relative;
+	display: none;
+	font-family: 'Dancing Script';
+	font-size: 40px;
+	color: white;
+}
+.timer{
+	display: none;
+}
+.timerinfo{
+	color: white;
+	font-family: 'Exo';
+	font-size: 24px;
+	text-shadow: 2px 2px 2px rgb(0, 0, 0);
+}
+.time{
+	font-family: 'Comfortaa';
+	font-size: 50px;
+	background: #060537;
+	color: white;
+	border-radius: 2px;
+	box-shadow: 2px 5px 10px rgb(0, 0, 0);
+	padding: 5px 5px 5px 5px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<br><br><br>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 col-xs-12">
+			<img src="http://pngimg.com/upload/gift_PNG5943.png" class="img-responsive" id="main">
+			<br><br><br>
+			<h5 class="text-center" id="info">BABY, Click to open your GIFT</h5>
+			<h5 class="text-center" id="message">Ohoo, Too early BABY, Its not your birthday today, Until then you got this</h5>
+			<br>
+			<div class="row timer">
+				<div class="col-md-3 col-xs-3">
+					<h5 class=" text-center timerinfo">Days</h5>
+					<div class="text-center time" id="days"></div>
+				</div>
+				<div class="col-md-3 col-xs-3">
+					<h5 class="text-center timerinfo">Hours</h5>
+					<div class="text-center time" id="hours"></div>
+				</div>
+				<div class="col-md-3 col-xs-3">
+					<h5 class="text-center timerinfo">Minutes</h5>
+					<div class="text-center time" id="minutes"></div>
+				</div>
+				<div class="col-md-3 col-xs-3">
+					<h5 class="text-center timerinfo">Seconds</h5>
+					<div class="text-center time" id="seconds"></div>
+				</div>
+			</div>
+			<br>
+			<h5 class="text-center" id="foot">... for the big day</h5>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+</div>
+
+<script>
+
+$(document).ready(function(){
+	animate();
+
+	$('#info').animate({
+		left: '0px'
+	}, 2500);
+
+	$('#main').on('click',function(){
+		$('#main').fadeOut(800);
+		$('#info').fadeOut(1000, "swing", showMessage());
+	});
+	setInterval(displayDate, 1000);
+});
+
+function animate(){
+	$('#main').animate({
+		top: '60px'
+	},800, function(){
+		$(this).animate({
+			top: '0px'
+		}, 800, animate());
+	});
+}
+
+function showMessage(){
+	$('#message').fadeIn(1000);
+	$('.timer').fadeIn(800);
+	$('#foot').fadeIn(800);
+}
+
+function getDate(targetDate){
+	var d = new Date();
+	var days = d.getDate();
+	var hours = d.getHours();
+	var minutes = d.getMinutes();
+	var seconds = d.getSeconds();
+
+	targetDate = targetDate.split(' ');
+
+	var targetDays = parseInt(targetDate[0]);
+	var targetHours = parseInt(targetDate[1]);
+	var targetMinutes = parseInt(targetDate[2]);
+	var targetSeconds = parseInt(targetDate[3]);
+
+	var displaySeconds = toSeconds(targetDays, targetHours, targetMinutes, targetSeconds) - toSeconds(days, hours, minutes, seconds);
+	
+	return toDays(displaySeconds);
+}
+
+function displayDate(){
+	var time = getDate("354 00 00 00");
+
+	$('#days').html(time[0]);
+
+	if(time[1] < 10)
+		$('#hours').html('0'+time[1]);
+	else
+		$('#hours').html(time[1]);
+
+	if(time[2] < 10)
+		$('#minutes').html('0'+time[2]);
+	else
+		$('#minutes').html(time[2]);
+
+	if(time[3] < 10)
+		$('#seconds').html('0'+time[3]);
+	else
+		$('#seconds').html(time[3]);
+}
+
+function toSeconds(days, hours, minutes, seconds){
+	var totalHours = days*24+hours;
+	var totalMinutes = totalHours*60+minutes;
+	var totalSeconds = totalMinutes*60+seconds;
+
+	return totalSeconds;
+}
+
+function toDays(seconds){
+	var minutes = parseInt(seconds/60);
+	var remainingSeconds = seconds%60;
+	var hours = parseInt(minutes/60);
+	var remainingMinutes = minutes%60;
+	var days = parseInt(hours/24);
+	var remainingHours = hours%24;
+
+	var timer = [days, remainingHours, remainingMinutes, remainingSeconds];
+	return timer;
+}
+</script>
+
+</body>
+</html>

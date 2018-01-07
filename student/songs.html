@@ -1,0 +1,408 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo|Oleo+Script|Lobster|Architects+Daughter|Economica" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+
+var songsPath = ['songs/English/01.mp3','songs/English/02.mp3','songs/English/03.mp3','songs/English/04.mp3','songs/English/05.mp3','songs/Hindi/01.mp3','songs/Hindi/02.mp3','songs/Hindi/03.mp3'];
+
+var songsName = ['Sorry, Blame It On Me','Unknown title','Rise',"She's the One",'Sing for the moment','Hey Bhagwan','Aloo Chaat','Amplifier',];
+var count=0;
+	$(document).ready(function(){
+		var str = [],category = [],j=0;
+
+		for(var i=1;i<=8;i++)
+			str.push($('#des'+i).text());
+
+		for(var i=1;i<=8;i++,j++)
+			category.push(str[j].substr(str[j].indexOf(",")+2,str.length+1));
+		console.log(category);
+
+		$('.n1').on('click',function(){
+			$('.head').html("All Songs");
+			for(var i=1;i<=8;i++)
+				$('#allsongs'+i).show();
+		});
+
+		$('.n2').on('click',function(){
+			$('.head').html("English Songs");
+			for(var i=0;i<9;i++){
+				j = i+1;
+				if(category[i] === "English")
+					$('#allsongs'+j).show();
+				else
+					$('#allsongs'+j).hide();
+			}
+		});
+
+		$('.n3').on('click',function(){
+			$('.head').html("Hindi Songs");
+			for(var i=0;i<9;i++){
+				j = i+1;
+				if(category[i] === "Hindi")
+					$('#allsongs'+j).show();
+				else
+					$('#allsongs'+j).hide();
+			}
+		});
+
+		$('.n4').on('click',function(){
+			$('.head').html("Punjabi Songs");
+			for(var i=0;i<9;i++){
+				j = i+1;
+				if(category[i] === "Punjabi")
+					$('#allsongs'+j).show();
+				else
+					$('#allsongs'+j).hide();
+			}
+		});
+
+		$('.songName').on('click',function(){
+			var name = $(this).text();
+			var songPath = getSongPath(name);
+
+			if(count == 0){
+				audio = new Audio(songPath);
+				$('#audioPlayer').css('visibility','visible');
+				$('source').attr('src',songPath);
+				audio.load();
+				$('#songName').text(name);
+				audio.play();
+			}else{
+				audio.pause();
+				audio = new Audio(songPath);
+				$('source').attr('src',songPath);
+				audio.load();
+				$('#songName').text(name);
+				audio.play();
+			}
+
+			audio.addEventListener('loadeddata',function(){
+				var minutes = parseInt(parseInt(audio.duration)/60);
+				var seconds = parseInt(parseInt(audio.duration%60));
+
+				if(minutes < 10 && seconds < 10)
+					$('#totalDuration').html('0'+minutes+':0'+seconds);
+				else
+					$('#totalDuration').html('0'+minutes+':'+seconds);
+			}, false);
+
+			$('#pauseButton').on('click',playOrPause);
+			setInterval(updatePlayer,1000);
+
+			count++;
+		});
+
+		$('#searchTab').keyup(function(event){
+			var name =[],j;
+
+			if(event.keyCode == 13){
+				var keyword = $(this).val().toLowerCase();
+
+				$('#heading').html('Search Result');
+
+				for(var i=0;i<songsName.length;i++){
+					name.push(songsName[i].toLowerCase());
+				}
+
+				for(var i=0;i<name.length;i++){
+					j=i+1;
+					if(name[i].indexOf(keyword) !=-1){
+						console.log('Match Found and INDEX = '+i);
+						$('#allsongs'+j).show();
+					}else{
+						console.log('match Not Found and INDEX = '+i);
+						$('#allsongs'+j).hide();
+					}
+				}
+			}
+		});
+	});
+
+	function getSongPath(songName){
+		switch(songName){
+		case 'Sorry, Blame It On Me':
+			return songsPath[1];
+		case 'Unknown title':
+			return songsPath[0];
+		case 'Rise':
+			return songsPath[2];
+		case "She's the One":
+			return songsPath[3];
+		case 'Sing for the moment':
+			return songsPath[4];
+		case 'Hey Bhagwan':
+			return songsPath[5];
+		case 'Amplifier':
+			return songsPath[7];
+		case 'Aloo Chaat':
+			return songsPath[6];
+		}
+	}
+
+	function playOrPause(){
+		if(audio.paused){
+			audio.play();
+			$('#pauseButton').attr('src','images/pause.png');
+		}
+		else{
+			$('#pauseButton').attr('src','images/play.png');
+			audio.pause();
+		}
+	}
+
+	function updatePlayer(){
+		var minutes = parseInt(parseInt(audio.currentTime)/60);
+		var seconds = parseInt(parseInt(audio.currentTime)%60);
+
+		if(minutes < 10 && seconds < 10)
+			$('#currentDuration').html('0'+minutes+':0'+seconds);
+		else
+			$('#currentDuration').html('0'+minutes+':'+seconds);
+	}
+</script>
+<style>
+#des{
+	font-size: 16px;
+}
+#brand{
+	margin-left: 10px;
+	font-family: 'Exo';
+	font-size: 24px;
+	color: darkcyan;
+}
+.navbar-fixed-left {
+ 	width: 200px;
+  	position: fixed;
+  	border-radius: 0;
+  	height: 100%;
+}
+
+.navbar-fixed-left .navbar-nav > li {
+  	float: right;  /* Cancel default li float: left */
+ 	width: 139px;
+}
+
+.navbar-fixed-left + .container {
+  	padding-left: 160px;
+}
+#n2{
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+<header class="navbar navbar-default navbar-fixed-top" id="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavBar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button> 
+			<a href="#"><img src="images/logo.png" class="img-responsive" id="logo"></a>
+		</div>
+		<nav role="navigation" class="collapse navbar-collapse" id="myNavBar">
+		<ul class="nav navbar-nav">
+			<li><a id="n2" href="index.html"><i class="fa fa-home fa-fw"></i> Home</a></li>
+			<li><a id="n2" href="#"><i class="fa fa-music fa-fw"></i> Songs</a></li>
+			<li><input type="text" placeholder="Search Songs" id="searchTab"></li>
+			<!--<li><a href="#" id="followbutton"><i class="fa fa-globe fa-fw"></i> Connect</a></li>-->
+			<li><a id="n2" href="aboutus.html"><i class="fa fa-users fa-fw"></i> About Us</a></li>
+		</ul>
+		</nav>
+	</div>
+</header>
+<br><br><br><br>
+<div class="navbar navbar-default navbar-fixed-left">
+	<div class="navbar-header">
+		<h3 id="brand">Categories</h3>
+	</div>
+ 	<nav role="navigation" class="collapse navbar-collapse" id="myNavBar">
+  	<ul class="nav navbar-nav">
+  		<li class="divider"></li>
+  		<li id="n2" class="n1">All Songs</li>
+   		<li id="n2" class="n2">English</li>
+   		<li id="n2" class="n3">Hindi</li>
+   		<li id="n2" class="n4">Punjabi</li>
+  	</ul>
+  	</nav>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h3 id="heading" class="head">All Songs</h3>
+		</div>
+	</div>
+	<br>
+	<div class="row" id="allsongs1">
+		<div class="col-md-2 col-xs-6" >
+			<img id="songicon" src="images/songicon.jpg" class="img-responsive">
+		</div>
+		<div class="col-md-6 col-xs-6">
+			<h3  class="songName">Sorry, Blame It On Me</h3>
+			<p id="des1">Akon, English</p>
+		</div>
+	</div>
+	<br>
+	<div class="row" id="allsongs2">
+		<div class="col-md-2 col-xs-6">
+			<img id="songicon" src="images/songicon.jpg" class="img-responsive">
+		</div>
+		<div class="col-md-6 col-xs-6" id="allsongs">
+			<h3 class="songName">Unknown title</h3>
+			<p id="des2">Unknown Artist, English</p>
+		</div>
+	</div>
+	<br>
+	<div class="row" id="allsongs3" >
+		<div class="col-md-2 col-xs-6">
+			<img id="songicon" src="images/songicon.jpg" class="img-responsive">
+		</div>
+		<div class="col-md-6 col-xs-6" id="allsongs">
+			<h3  class="songName">Rise</h3>
+			<p id="des3">Unknown Artist, English</p>
+		</div>
+	</div>
+	<br>
+	<div class="row" id="allsongs4" >
+		<div class="col-md-2 col-xs-6">
+			<img id="songicon" src="images/songicon.jpg" class="img-responsive">
+		</div>
+		<div class="col-md-6 col-xs-6" id="allsongs">
+			<h3  class="songName">She's the One</h3>
+			<p id="des4">Eminem, English</p>
+		</div>
+	</div>
+	<br>
+	<div class="row" id="allsongs5" >
+		<div class="col-md-2 col-xs-6">
+			<img id="songicon" src="images/songicon.jpg" class="img-responsive">
+		</div>
+		<div class="col-md-6 col-xs-6" id="allsongs">
+			<h3  class="songName">Sing for the moment</h3>
+			<p id="des5">Eminem, English</p>
+		</div>
+	</div>
+	<br>
+	<div class="row" id="allsongs6" >
+		<div class="col-md-2 col-xs-6">
+			<img id="songicon" src="images/songicon.jpg" class="img-responsive">
+		</div>
+		<div class="col-md-10 col-xs-6" id="allsongs">
+			<h3 class="songName">Hey Bhagwan</h3>
+			<p id="des6">Raghu Dixit (Coke Studio), Hindi</p>
+		</div>
+	</div>
+	<br>
+	<div class="row" id="allsongs7">
+		<div class="col-md-2 col-xs-6">
+			<img id="songicon" src="images/songicon.jpg" class="img-responsive">
+		</div>
+		<div class="col-md-10 col-xs-6" id="allsongs">
+			<h3 class="songName">Aloo Chaat</h3>
+			<p id="des7">RDB (Aloo Chaat), Hindi</p>
+		</div>
+	</div>
+	<br>
+	<div class="row" id="allsongs8">
+		<div class="col-md-2 col-xs-6">
+			<img id="songicon" src="images/songicon.jpg" class="img-responsive">
+		</div>
+		<div class="col-md-10 col-xs-6" id="allsongs">
+			<h3 class="songName">Amplifier</h3>
+			<p id="des8">Imran Khan, Punjabi</p>
+		</div>
+	</div>
+</div>
+
+<!--Audio Player-->
+<div class="navbar-fixed-bottom" id="audioPlayer">
+	<br>
+	<div class="row">
+		<div class="col-md-3 col-xs-3">
+			<div class="row">
+				<div class="col-md-3 col-xs-3">
+					<img src="images/songicon.jpg" class="img-responsive" id="thumbnail">
+				</div>		
+				<div class="col-md-9 col-xs-9">
+					<h5 id="songName">Song Name</h5>
+					<p id="songDescription">Description about Song</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9 col-xs-9">
+			<div class="row">
+				<div class="col-md-2 col-xs-4" id="audioControls">
+					<img src="images/pause.png" class="img-responsive" id="pauseButton">
+				</div>
+				<div class="col-md-1 col-xs-1">
+					<br>
+					<p id="currentDuration">00:00</p>
+				</div>
+				<div class="col-md-8 col-xs-6" >
+					<br>
+					<div id="progressbar"></div>	
+				</div>
+				<div class="col-md-1 col-xs-1">
+					<br>
+					<p id="totalDuration"></p>
+				</div>
+			</div>
+		</div>
+		<audio id="listenNow">
+			<source src="" type="audio/mp3">
+		</audio>
+	</div>
+</div>
+<br><br>
+
+<footer>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-5"></div>
+			<div class="col-md-4 col-xs-12">
+				<h3 id="bottomHeading">Follow Us At:-</h3>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-1 col-xs-2">
+				<a href="http://www.facebook.com" id="follow" target="_blank"><i class="fa fa-facebook fa-fw" id="follow"></i>  </a>
+			</div>
+			<div class="col-md-1 col-xs-2">
+				<a href="http://www.twitter.com" id="follow" target="_blank"><i class="fa fa-twitter fa-fw" id="follow"></i>  </a>
+			</div>
+			<div class="col-md-1 col-xs-2">
+				<a href="http://www.linkedin.com" id="follow" target="_blank"><i class="fa fa-linkedin fa-fw" id="follow"></i>  </a>
+			</div>
+			<div class="col-md-1 col-xs-2">
+				<a href="https://plus.google.com" id="follow" target="_blank"><i class="fa fa-google-plus fa-fw" id="follow"></i>  </a>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		<br><br>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-8">
+				<ul id="foot">
+					<li id="foot">Terms of use | </li>
+					<li id="foot">Privacy Policy | </li>
+					<li id="foot">Report an Issue</li>
+				</ul>
+			</div>
+		</div>
+	</div><br><br>
+</footer>
+</body>
+</html>

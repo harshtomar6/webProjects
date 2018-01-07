@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	.container{
+		background-color: rgba(0, 0, 0, 0.1);
+		margin: 10% auto;
+		padding: 10%;
+
+	}
+
+	.circle{
+		width: 10px;
+		height: 10px;
+		border-radius: 100%;
+		background-color: rgba(0, 0, 0, 0.8);
+		display: inline-block;
+		position: relative;
+	}
+
+	#three{
+		animation: one 2s linear;
+	}
+
+	#two{
+		animation: one 3s linear;
+		animation-delay: 0.2s;
+	}
+
+	#one{
+		animation: one 4s linear;
+		animation-delay: 0.4s
+	}
+
+	@keyframes one{
+		0% {left: 0px;}
+		50% {left: 400px;}
+		100%{left: 800px;}
+	}
+
+	@keyframes two{
+		0% {top: 0px;}
+		50% {top: -20px;}
+		100% {top : 0;}
+	}
+
+	@keyframes three{
+		0% {top: 0px;}
+		50% {top: -25px;}
+		100% {top : 0;}
+	}	
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="circle" id="one"></div>
+		<div class="circle" id="two"></div>
+		<div class="circle" id="three"></div>
+	</div>
+</body>
+</html>

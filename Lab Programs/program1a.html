@@ -1,0 +1,41 @@
+<pre id="pre">
+  <span class="import">import java.util.Scanner</span>;
+
+  <span class="specifier">public class</span> student{
+    <span class="specifier">private</span><span class="keyword"> String</span> usn;
+		<span class="specifier">private</span><span class="keyword"> String</span> name;
+		<span class="specifier">private</span><span class="keyword"> String</span> branch;
+		<span class="specifier">private</span><span class="keyword"> long</span> phone;
+
+		<span class="specifier">public static </span> <span class="return-type">void</span> main(String[] args){
+			Scanner input = <span class="import">new</span> Scanner(System.in);
+
+			<span class="keyword">int</span> n,i;
+
+			System.out.println(<span class="string">"Enter the value of n"</span>);
+			n = input.<span class="method">nextInt()</span>;
+			
+			<span class="comment">//Array of objects of type student</span>
+			student[] s = <span class="import">new</span> student[n];
+			
+			<span class="keyword">for</span>(i=0;i<n;i++){
+				<span class="comment">//instance of each object</span>
+				s[i] = <span class="import">new</span> student();
+				System.out.println(<span class="string">"Enter USN of student "</span>+i);
+				s[i].usn = input.<span class="method">next()</span>;
+				System.out.println(<span class="string">"Enter name of student "</span>+i);
+				s[i].name = input.<span class="method">next()</span>;
+				System.out.println(<span class="string">"Enter branch of student "</span>+i);
+				s[i].branch = input.<span class="method">next()</span>;
+				System.out.println(<span class="string">"Enter phone number of student "</span>+i);
+				s[i].phone = input.<span class="methid">nextLong()</span>;
+			}
+
+			System.out.println(<span class="string">Details entered by you are:\n"</span>);
+			<span class="keyword">for</span>(i=0;i<n;i++){
+				System.out.println(<span class="string">"Student "</span>+i);
+				System.out.println(<span class="string">"USN -> "</span>+s[i].usn+<span class="string">"\nName -> "</span>+s[i].name+<span class="string">"\nBranch -> "</span>+s[i].branch+<span class="string">"\nPhone -> "</span>+s[i].phone+<span class="string">"\n"</span>);
+			}
+		}
+	}
+</pre>

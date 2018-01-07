@@ -1,0 +1,298 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo|Oleo+Script|Lobster|Architects+Daughter|Economica" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+    body{
+        transition: 0.5s;        
+    }
+    .navbar{
+        height: 100%;
+        width: 0;
+        position: fixed;
+        transition: 0.5s;
+        z-index: 1;
+        overflow-x: hidden;
+        background-color: #111;
+        top: 0;
+        left: 0;
+        padding-top: 65px;
+        box-shadow: 0 5px 10px rgb(0, 0, 0);
+    }
+    
+    .navbar .closeButton{
+        position: absolute;
+        top: 0;
+        right: 20px;
+        font-size: 36px;
+        margin-left: 60px;
+    }
+    
+    .navbar a{
+        padding: 8px 8px 8px 36px;
+        display: block;
+        text-decoration: none;
+        font-size: 18px;
+        transition: 0.3s;
+        color: #818181;
+    }
+    
+    .openButton{
+        position: fixed;
+        margin-left: 20px;
+        font-size: 24px;
+        cursor: pointer;
+        color: white;
+        transition: 0.5s;
+    }
+    
+    #home{
+        background: url('https://s-media-cache-ak0.pinimg.com/originals/74/2b/7f/742b7f1be85037838973443e21b8e114.jpg') no-repeat fixed;
+        background-size: cover;
+        transition: 0.5s;
+        background-blend-mode: soft-light;
+        
+    }
+    
+    #profile{
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 100%;
+        top: -500px;
+    }
+    
+    #welcomenote{
+        color: white;
+    }
+    
+    #scroll{
+        color: white;
+        opacity: 0;
+        cursor: pointer;
+    }
+    
+    .blink{
+        display: hidden;
+    }
+    
+    #about{
+        background: url(' http://aestheticio.com/wp-content/uploads/2015/05/bp_background_2_blue1.jpg') no-repeat fixed;
+        background-size: cover;
+    }
+    
+    #profile-about{
+        display: none;
+    }
+    
+    .text{
+        color: white;
+    }
+    
+    #portfolio{
+        background: url('http://www.uksoftech.com/wp-content/uploads/2016/02/website-design-background.png') no-repeat fixed;
+        background-size: cover;
+    }
+</style>    
+</head>
+<body>
+    <!--Navigation Side bar-->
+    <div class="navbar">
+        <a href="javascript:void(0)" class="closeButton">&times;</a>
+        <a href="#"><i class="fa fa-home fa-fw"></i> Home</a>
+        <a href="#about"><i class="fa fa-user fa-fw"></i> About</a>
+        <a href="#portfolio"><i class="fa fa-wpforms fa-fw"></i> Portfolio</a>
+        <a href="#contact"><i class="fa fa-globe fa-fw"></i> Contact Us</a>
+    </div>
+    
+    <!--Side Menu Toggle Button-->
+    <nav class="nav navbar-fixed-top">
+        <h1><i class="fa fa-bars fa-fw openButton"></i></h1>
+    </nav>
+     
+    <!--Home Container-->
+    <div class="container-fluid" id="home">
+        <div class="col-md-4 col-sm-3"></div>
+        <div class="col-md-4 col-xs-12 col-sm-6" id="center">
+            <br><br><br><br><br>
+            <img src="https://lh5.googleusercontent.com/B880vt9WJWY7R3Wz1Jl1SCOeWjHvNE7hOR_LH1i4KSOt-fkSjPCiFLKEzbwrBF6Zs3oPdtrZtgH0zkg=w1366-h638-rw" class="img-responsive" id="profile">
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <h2 class="text" id="welcomenote"><span class="blink"></span></h2>
+            <br><br>
+            <h1 class="text-center"><i class="fa fa-angle-double-down" id="scroll"></i></h1>
+        </div>
+        <div class="col-md-4 col-sm-3"></div>
+    </div>
+    
+    <!--About Container-->
+    <div class="container-fluid" id="about">
+        <div class="col-md-4 col-sm-3"></div>
+        <div class="col-md-4 col-xs-12 col-sm-6">
+            <br><br><br>
+            <h2 class="text" id="intro"></h2>
+            <br><br>
+             <img src="https://lh5.googleusercontent.com/B880vt9WJWY7R3Wz1Jl1SCOeWjHvNE7hOR_LH1i4KSOt-fkSjPCiFLKEzbwrBF6Zs3oPdtrZtgH0zkg=w1366-h638-rw" class="img-responsive" id="profile-about">
+        </div>
+        <div class="col-md-4 col-sm-3"></div>
+    </div>
+    
+    <!--Portfolio Container-->
+    <div class="container-fluid" id="portfolio">
+        <div class="col-md-4 col-sm-3"></div>
+        <div class="col-md-4 col-xs-12 col-sm-6">
+            <br><br><br>
+            <h2 class="text" id="portfolio-text"></h2>
+        </div>
+        <div class="col-md-4 col-sm-3"></div>
+    </div>
+</body>
+    
+<script>
+    var height = window.innerHeight
+	   || document.documentElement.clientHeight
+	   || document.body.clientHeight;
+    
+    $(document).ready(function(){
+        $('.wrapper').css('height', height+'px');
+        $('#home').css('height', height+'px');
+        $('#about').css('height', height+'px');
+        $('#portfolio').css('height', height+'px');
+        //$('#contactme').css('height', height+'px');
+        
+        $('.closeButton').on('click', function(){
+            $('.navbar').css('width', '0px');
+            $('#home').css('background-color', '');
+            $('.openButton').show();
+        });
+        
+        $('.openButton').on('click',function(){
+            $('.navbar').css('width', '250px');
+            //$('body').css('margin-left', '250px');
+            $('#home').css('background-color', "grey");
+            $(this).hide();
+        });
+        
+        $('#profile').animate({
+            'top': '80px'
+        }, 2000);
+        
+        setTimeout(function(){
+            typetext("Hey There! Welcome to this awesome website...", "#welcomenote", function(){
+                $('#scroll').animate({opacity: 1}, 1000);    
+            });                    
+        }, 2500);
+        
+        $('#scroll').on('click', function(){
+            var elements = ['.one', '.two', '.three'];
+        
+            scrollto('#about');
+        });
+        
+        onTop('#about', "Hi! I am Harsh Tomar, certified front-end developer", "#intro");
+        onTop('#portfolio', "Welcome To my awesome Webite. Some of my works are:", "#portfolio-text");
+    
+    });
+    
+    function typetext(text, location, callBack){
+        var arr = text.split("");
+        var i=0, text;
+        $(location).text("");
+        var time = setInterval(function(){
+                if(i >= arr.length){
+                    clearInterval(time);
+                    callBack();
+                    $(location).html(text[0]+arr[arr.length-1]+'<span class="blink">|</span>');    
+                    blink();
+                }else{
+                    text = $(location).text().split("|");
+                    $(location).text(text[0]+arr[i]+"|");
+                    i++;    
+                }
+            }, 150);  
+    }
+    
+    function blink(){
+        $('.blink').animate({
+            'opacity': '0'
+        }, 500, function(){
+            $(this).animate({
+                'opacity': '1'
+            }, 500, blink());
+        });
+    }
+    
+    function scrollto(element){
+        $('.one').animate({
+            scrollTop: $(element).offset().top
+            //marginTop: '-750px'
+        }, 1100, function(){
+            $(element).animate({marginTop: '0px'}, 500);
+        });
+    }
+    
+    function onTop(element, text, location){
+        var distance = $(element).offset().top;
+        
+        $(window).on('scroll', function(){
+            if($(this).scrollTop() == distance)
+                typetext(text, location , function(){
+                    $('#profile-about').fadeIn(1000);
+                });
+            else
+                console.log(false);
+        });
+    }
+    
+    function getElementOnTop(){
+        var offset = $(window).scrollTop();
+        
+        if(offset == 0)
+            return "#home";
+        else if(offset == 638)
+            return "#about";
+        else if(offset == 1276)
+            return "#portfolio";
+    }
+    
+    function mousescroll(){
+        $(window).bind('mousewheel', function(event) {
+            if(getElementOnTop() == "#home"){
+                if (event.originalEvent.wheelDelta >= 0) {
+                    console.log('Scroll up');
+                }
+                else {
+                    console.log('Scroll down');
+                    scrollto('#about');
+                }    
+            }
+            
+            if(getElementOnTop() == "#about"){
+                if (event.originalEvent.wheelDelta >= 0) {
+                    console.log('Scroll up');
+                    scrollto('#home');
+                }
+                else {
+                    console.log('Scroll down');
+                    scrollto('#portfolio');
+                }
+            }
+            
+            if(getElementOnTop() == "#portfolio"){
+                if (event.originalEvent.wheelDelta >= 0) {
+                    console.log('Scroll up');
+                    scrollto('#about');
+                }
+                else {
+                    console.log('Scroll down');
+                }
+            }
+        });
+    }
+</script>        
+</html>

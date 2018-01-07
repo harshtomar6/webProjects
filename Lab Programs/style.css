@@ -1,0 +1,244 @@
+body{
+	background: lightgrey ;
+
+}
+.sideBar{
+	background: linear-gradient(to bottom left, #0ABF5E, #0A82BF);
+	height: 100%;
+	width: 0;
+	position: fixed;
+	transition: 0.5s;
+	overflow-x: hidden;
+	z-index: 1;
+	box-shadow: 0 5px 10px rgb(0, 0, 0);
+	padding-top: 70px;
+}
+
+.sideBar a{
+	padding: 8px 8px 8px 36px;
+    display: block;
+    text-decoration: none;
+    font-size: 1.5em;
+    transition: 0.5s;
+    color: white;
+}
+#programs{
+	padding: 8px 8px 8px 36px;
+    display: block;
+    text-decoration: none;
+    font-size: 1.5em;
+    transition: 0.5s;
+    color: white;	
+    cursor: pointer;
+}
+
+.program-list{
+	text-decoration: none;
+	display: none;
+	font-size: 1.1em;
+	transition: 0.5s;
+	color: white;
+	margin-left: 40%;
+}
+
+.program-list a{
+	padding: 0 0 0 0;
+	font-size: 1.2em;
+}
+
+.openButton{
+	cursor: pointer;
+	transition: 0.5s;
+	color: white;
+	margin-left: 10px;
+	font-size: 1em;
+}
+
+.openButton:hover{
+	transform: scale(1.1);
+	transition: 0.3s;
+	text-shadow: 0 0 30px rgb(0, 0, 0);
+}
+
+.searchIcon{
+	cursor: pointer;
+	position: absolute;
+	top: 15px;
+	right: 20px;
+	color: white;
+	font-size: 1.2em;
+}
+
+.searchIcon:hover{
+	transform: scale(1.1);
+	transition: 0.3s;
+	text-shadow: 0 0 50px rgb(0, 0, 0);
+}
+
+.searchBar{
+	font-size: 3em;
+	border: none;
+	height: 2.5em;
+}
+
+.sideBar .closeButton{
+	position: absolute;
+	font-size: 4em;
+	color: #fe7f00;
+	right: 20px;
+	top: 0px;
+	text-shadow: 0 0 30px rgb(0, 0, 0);
+}
+
+.sideBar .closeButton:hover{
+	transform: scale(1.1);
+	transition: 0.3s;
+	text-shadow: 0 0 30px rgb(0, 0, 0);
+}
+
+#home{
+	transition: 0.5s;
+}
+
+.home{
+	background: url("background.jpeg") fixed no-repeat;
+	background-size: cover;
+	padding-top: 10em; 
+}
+
+.wrapper{
+	box-shadow: 0 0 50px rgb(0, 0, 0);
+	margin: 20px 0 20px 0;
+	padding: 0;
+}
+.modal-header{
+    background: linear-gradient(to bottom left, #0ABF5E, #0A82BF);
+}
+
+.title{
+    font-size: 2.5em;
+    font-family: 'Ubuntu';
+    font-weight: bold;
+    color: white;
+}
+
+.heading-wraper{
+	height: 250px;
+	overflow-y: scroll;
+}
+
+.heading-wraper::-webkit-scrollbar{
+	width: 5px;
+}
+
+.heading{
+	font-family: "Ubuntu";
+	font-size: 2em;
+	color: white;
+	margin-bottom: 2.5em;
+}
+
+.searchBar:focused{
+	box-shadow: 0 0 30px #00376e;
+}
+
+.code{
+	padding: 0;
+	overflow: hidden;
+}
+
+.code-editor{
+	background-color: #0B051E;
+	color: white;
+	font-family: "Ubuntu";
+	font-size: 14px;
+	border-left: 20px solid #8D0815;
+}
+
+#output{
+	margin-top: 50%;
+	background: linear-gradient(to bottom left, #0ABF5E, #0A82BF);
+	padding: 0;
+	width: 100%;
+}
+
+pre{
+    background-color: #0B051E;
+    color: white;
+    font-family: "Ubuntu";
+    font-size: 16px;
+    border-left: 20px solid #8D0815;  
+}
+
+.output{
+	color: white;
+	border: none;
+	margin-left: 25%;
+}
+
+#pre{
+	border: none;
+	box-shadow: 0 0 50px rgb(0, 0, 0);
+}
+
+.btn-main{
+	font-family: "Ubuntu";
+	color: #0B4465;
+	text-decoration: none;
+	border: 2px solid #0B4465;
+	font-size: 1.5em;
+	background-color: white;
+	border-radius: 10px;
+	width: 100%;
+}
+
+.modal-btn{
+	color: white;
+	background: linear-gradient(to bottom left, #0ABF5E, #0A82BF);
+	font-family: "Ubuntu";
+	font-size: 1.5em;
+	border-radius: 5px;
+	border: 1px solid #0B4465;
+}
+
+.modal-dismiss-btn{
+	background-color: white;
+	color: #0A82BF;
+	border: 2px solid #0B4465;
+	border-radius: 5px;
+	font-size: 1.2em;
+	font-family: "Ubuntu";
+}
+
+.btn-main:hover{
+	background-color: #0B4465;
+	color: white;
+	box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+#codeSubmit{
+	margin-bottom: 20px;
+}
+    .import{
+        color:yellow;
+    }
+    .specifier{
+        color:chocolate;
+    }
+    .return-type{
+        color:crimson;
+    }
+    .keyword{
+        color: #FE1B48;
+    }
+    .string{
+        color:darkturquoise;
+    }
+    .method{
+        color:orangered;
+    }
+    .comment{
+    	color: silver;
+    }
+
+

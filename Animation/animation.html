@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<style>
+body{
+	background-color: black;
+}
+#ship{
+	background-color: yellow;
+	position: absolute;
+	width: 60px;
+	height: 60px;
+}
+#bullet{
+	visibility: hidden;
+	background-color: darkblue;
+	position: absolute;
+	width: 5px;
+	height: 20px;
+}
+#info{
+	color: white;
+}
+</style>
+</head>
+<body onkeydown="moveSquare(event)">
+<img src="spaceship_1.png" id="ship">
+<p id="info"></p>
+<div id="bullet"></div>
+<script type="text/javascript">
+	var elem = document.getElementById("ship");
+	var bullet = document.getElementById("bullet");
+	var left_pos = 0;
+	var top_pos = 0;
+	var lpos;
+	var tpos;
+	var id;
+	function moveSquare(event){
+
+		if(event.keyCode == 68){
+			if(left_pos == 1300)
+				elem.style.left = left_pos+"px";
+			else
+			{	
+				left_pos=left_pos+20;
+				elem.style.left = left_pos+"px";		
+			}
+			
+		}
+		else if(event.keyCode == 65){
+			if(left_pos == 0)
+				elem.style.left = left_pos+"px";
+			else{
+				left_pos=left_pos-20;
+				elem.style.left = left_pos+"px";	
+			}		
+		}
+		else if(event.keyCode == 83){
+			if(top_pos == 580)
+				elem.style.top = top_pos+"px";
+			else{
+				top_pos=top_pos+20;	
+				elem.style.top = top_pos+"px";
+			}
+		}
+		else if(event.keyCode == 87){
+			if(top_pos == 0)
+				elem.style.top = top_pos+"px";
+			else{
+				top_pos=top_pos-20;	
+				elem.style.top = top_pos+"px";
+			}
+		}
+		else if(event.keyCode == 32){
+			lpos = left_pos+30;
+			tpos = top_pos;
+			id = setInterval(fire, 1);
+			function fire(){
+				if(top_pos == -20)
+					clearInterval(id);
+				else{
+					tpos--;
+					bullet.style.visibility = 'visible';
+					bullet.style.top = tpos+"px";
+					bullet.style.left = lpos+"px";
+				}
+			}
+		}
+
+	document.getElementById("info").innerHTML = "x = "+left_pos+" y = "+top_pos; 
+	}
+</script>
+</body>
+</html>

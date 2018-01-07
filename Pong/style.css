@@ -1,0 +1,35 @@
+#canvas{
+    background-color: grey;
+    border: 20px solid black;
+}
+
+#middleLine{
+    height: 100%;
+    width: 20px;
+    background-color: black;
+    position: absolute;
+    top: 0
+}
+
+.bat{
+    background-color: black;
+    height: 30%;
+    width: 10px;
+    margin-top: 15%;
+    position: absolute;
+}
+
+.ball{
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    position: absolute;
+}
+#bat1{
+    margin-left: 2px;
+}
+
+#bat2{
+
+}

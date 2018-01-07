@@ -1,0 +1,373 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo|Oleo+Script|Lobster|Architects+Daughter|Economica" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body{
+	background-color:#fd8b0a;
+}
+#splash{
+	position: absolute;
+	top: -500px;
+}
+#score{
+	display: none;
+	background-color: black;
+	position: relative;
+	color: darkcyan;
+	font-family: 'Architects Daughter';
+	margin-left: 10% auto;
+	width: 150px;
+	height: 100px;
+}
+#dis{
+	font-family: 'Architects Daughter';
+	font-size: 24px;
+}
+#board{
+	display: none;
+	background: radial-gradient(#908e8d, #51504d);
+	border: 20px solid #d8c37d;
+	position: : relative;
+	margin: 10% auto;
+	width: 350px;
+	height: 350px;
+	box-shadow: inset -1px 1px 7px rgba(0,0,0,.2), inset 1px -1px 7px rgba(0,0,0,.2), 1px 12px 5px rgba(0,0,0,.4), 4px 3px 8px rgba(0,0,0,.4), 5px 10px 10px rgba(0,0,0,.2), -5px 10px 10px rgba(0,0,0,.4);
+}
+#canvas{
+	display: none;
+	width: 310px;
+	height: 310px;
+	position: absolute;
+	z-index: 0;
+}
+.info{
+	font-family: 'Architects Daughter';
+	font-size: 26px;
+	color: white;
+}
+#Xbutton{
+	margin: 10% 30% 10% 30%;
+}
+#Obutton{
+	margin-left: 30%;
+}
+.btn{
+	background-color: #d8c37d;
+	font-family: 'Architects Daughter';
+	font-size: 28px;
+	color: #908e8d;
+	border-radius: 30px;
+	padding-left: 20%;
+	padding-right: 20%; 
+}
+.btn:hover{
+	transform: scale(1.1);
+	transition: 0.3s;
+	color: #908e8d;
+}
+.boxes{
+	list-style-type: none;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	padding: 0;
+}
+.boxes li{
+	width: 32%;
+	height: 32%;
+	display: inline-block;
+	position: relative;
+	z-index: 1000;
+	overflow:hidden; 
+}
+li{
+	padding-top: 20px;
+	z-index: 500;
+	width: 100%;
+	height: 100%;
+	display: block;
+	text-align: center;
+	font-family: 'Architects Daughter';
+	font-size: 56px;
+	color: #d8c37d;
+	cursor: pointer;
+} 
+#score{
+    background-color: aliceblue;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}    
+</style>
+<script>
+	var computerMoves = [];
+	var userMoves = [];
+	var firstGame = true;
+
+	$(document).ready(function(){
+		$('#splash').animate({
+			top: '150px',
+		},1500, function(){
+			$('#splash').animate({
+				top: '100px',
+			}, 200);
+		});
+
+		setTimeout(function(){
+			$('#splash').fadeOut(1000);
+			$('#board').fadeIn(1500);	
+		}, 3000);
+
+		$('#Xbutton').on('click', function(){
+			userChoice = 'X';
+			computerChoice = 'O';
+			$('.main').fadeOut(800, "swing", function(){
+				$('#canvas').fadeIn(1000);
+				$('#score').fadeIn(1000);	
+			});
+		});
+
+		$('#Obutton').on('click', function(){
+			userChoice = 'O';
+			computerChoice = 'X';
+			$('.main').fadeOut(800, "swing", function(){
+				$('#canvas').fadeIn(1000);
+				$('#score').fadeIn(1000);	
+			});
+		});
+
+		for(var i=1;i<=9;i++)
+			$('#box'+i).on('click', function(){
+				var str = $(this).attr('id');
+                
+                if($.inArray(parseInt(str[str.length-1]), userMoves) == -1){
+                    
+                    $(this).html(userChoice);
+                    userMoves.push(parseInt(str[str.length-1]));
+                    console.log(userMoves);
+                    gamePlay();    
+                }    
+			});
+
+		drawBoard();
+	});
+
+	function drawLine(ctx, startX, startY, endX, endY){
+		ctx.moveTo(startX, startY);
+		ctx.lineTo(endX, endY);
+		ctx.stroke();
+		ctx.strokeStyle = "#d8c37d";
+	}
+
+	function drawBoard(){
+		var c = document.getElementById("canvas");
+		var ctx = c.getContext("2d");
+	
+		drawLine(ctx, 100, 0, 100, 150);
+		drawLine(ctx, 200, 0, 200, 150);
+		drawLine(ctx, 0, 50, 300, 50);
+		drawLine(ctx, 0, 102, 300, 102);
+		drawLine(ctx, 0, 200, 300, 200);
+	}
+
+	function gamePlay(){
+		winCombo = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
+
+		if(firstGame){
+			$('#box'+computerMove.firstMove()).html(computerChoice);
+		}
+		else
+			$('#box'+computerMove.nextMove()).html(computerChoice);	
+        
+		console.log(computerMoves);
+	}
+
+	var computerMove = {
+		firstMove: function(){
+			var m;
+			if(userMoves[0] !== 5)
+				m = 5
+			else
+				m = 9;
+				
+			computerMoves.push(m);
+			firstGame = false;
+			return m;
+		},
+
+		nextMove: function(){
+			var m;
+
+			if(computerMoves[0] === 5){
+				if(userMoves[0] == 1 && userMoves[1] == 9 || userMoves[0] == 3 && userMoves[1] == 7){
+					m = 8;
+					computerMoves.push(m);
+					computerMoves = computerMoves.sort();
+					return m;
+				}
+				else{
+					m = preventUserWin();
+					if(m!==0){
+						computerMoves.push(m);
+						computerMoves = computerMoves.sort();
+						console.log("M = "+m);
+						return m;
+					}
+					else{
+						if(userMoves[1]!==8)
+							m = 8;
+						else
+							m = 2;
+
+						computerMoves.push(m);
+						computerMoves = computerMoves.sort();
+						console.log(makeComputerWin());
+						return m;	
+					}	
+				}
+			}
+			else{
+				m = preventUserWin();
+				if(m!==0){
+					computerMoves.push(m);
+					computerMoves = computerMoves.sort();
+					console.log("M = "+m);
+					return m;
+				}
+			}
+		},
+
+		movePrecedence: function(){
+
+		}
+		
+	}
+
+	function preventUserWin(){
+		var toWin = [[1,2],[2,3],[1,3],[4,5],[5,6],[4,6],[7,8],[8,9],[7,9],[1,4],[4,7],[1,7],[2,5],[5,8],[2,8],[3,6],[6,9],[3,9],[1,5],[5,9],[1,9],[3,5],[5,7],[3,7]];
+		var a = [];
+		for(var i=0;i<toWin.length;i++){
+			a.push(userMoves[userMoves.length-1]);
+			a.push(userMoves[userMoves.length-2]);
+			if(isMemberOf(a, toWin[i])){
+				console.log(i);
+				if(i==0)
+					return 3;
+				else if(i==1)
+					return 1;
+				else if(i==2)
+					return 2;
+				else if(i==3)
+					return 6;
+				else if(i==4)
+					return 4;
+				else if(i==5)
+					return 5;
+				else if(i==6)
+					return 9;
+				else if(i==7)
+					return 7;
+				else if(i==8)
+					return 8;
+				else if(i==9)
+					return 7;
+				else if(i==10)
+					return 1;
+				else if(i==11)
+					return 4;
+				else if(i==12)
+					return 8;
+				else if(i==13)
+					return 2;
+				else if(i==14)
+					return 5;
+				else if(i==15)
+					return 9;
+				else if(i==16)
+					return 3;
+				else if(i==17)
+					return 6;
+				else if(i==18)
+					return 9;
+				else if(i==19)
+					return 1;
+				else if(i==20)
+					return 5;
+				else if(i==21)
+					return 7;
+				else if(i==22)
+					return 3;
+				else
+					return 5;
+			}
+		}
+		return 0;
+	}
+
+	function makeComputerWin(){
+		var toWin = [[1,2],[2,3],[1,3],[4,5],[5,6],[4,6],[7,8],[8,9],[7,9],[1,4],[4,7],[1,7],[2,5],[5,8],[2,8],[3,6],[6,9],[3,9],[1,5],[5,9],[1,9],[3,5],[5,7],[3,7]];
+
+		for(var i=0;i<toWin.length;i++){
+			if(isMemberOf(computerMoves, toWin[i]))
+				return true;
+		}
+		return false;
+	}
+
+	function isMemberOf(arr, sub){
+		var status = false;
+		arr = arr.sort();
+		for(var i=0;i<arr.length;i++){
+			for(var j=0;j<sub.length;j++){
+				if(sub[j] == arr[i]){
+					status = true;
+					break;
+				}else
+					status = false;
+			}
+			if(!status)
+				return false;
+		}
+
+		if(status)
+			return true;
+	}
+</script>
+</head>
+<body>
+<div class="container">
+	<img src="http://www.dsmsales.net/images/logos/tttmarqlrg.gif" class="img-responsive" id="splash">
+	<div id="board">
+		<div class="main">
+			<p class="text-center info">Do you want to play as 'X' or 'O'</p>
+			<button type="button" class="btn" id="Xbutton">X</button>
+			<button type="button" class="btn" id="Obutton">O</button>
+		</div>
+		<canvas id="canvas"></canvas>
+		<ul class="boxes">
+			<li id="box1"></li>
+			<li id="box2"></li>
+			<li id="box3"></li>
+			<li id="box4"></li>
+			<li id="box5"></li>
+			<li id="box6"></li>
+			<li id="box7"></li>
+			<li id="box8"></li>
+			<li id="box9"></li>
+		</ul>
+        <br><br><br>
+        <div class="row">
+                <div class="col-xs-12 col-md-12" id="score"></div>
+        </div>
+	</div>	
+</div>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body{
+	background-color: lightgrey;
+}
+#calculator{
+	height: 430px;
+  	width: 300px;
+	margin-top: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #dfd8d0;
+	border: 2px solid #908b85;
+	border-radius: 20px;
+	box-shadow: 7px 10px 34px 1px rgba(0, 0, 0, 0.68), inset -1px -6px 12px 0.1px #89847e;
+}
+#top{
+	font-family: 'Play';
+}
+#display{
+	background-color: #c3c2ab;
+	border-radius: 5px;
+	height: auto;
+	font-family: 'Play';
+}
+#result{
+	font-size: 28px;
+}
+#buttons{
+	display: inline-block;
+	color: white;
+}
+.btn{
+	border-radius: 8px;
+  	border: none;
+  	margin: 0 4px 10px 8px;
+  	background-color: #3a3a3a;
+  	height: 40px;
+  	width: 50px;
+  	color: white;
+  	font-family: 'Play';
+  	font-size: 18px;
+  	box-shadow: 0px 3px 0px 0px #222121, inset -1px -3px 10px 1px #515151;
+}
+.btn:hover{
+	color: white;
+}
+.btn:focus{
+	color: white;
+}
+.btnAC{
+	border-radius: 8px;
+  	border: none;
+  	margin: 0 4px 10px 8px;
+  	height: 40px;
+  	width: 50px;
+  	color: white;
+  	font-family: 'Play';
+  	font-size: 18px;
+  	background-color: #a72d45;
+  	box-shadow: 0px 3px 0px 0px #671c2a;	
+}
+.btnAC:hover{
+	color: white;
+}
+.btnCE{
+	border-radius: 8px;
+  	border: none;
+  	margin: 0 4px 10px 8px;
+  	height: 40px;
+  	width: 50px;
+  	color: white;
+  	font-family: 'Play';
+  	font-size: 18px;
+  	background-color: #a72d45;
+  	box-shadow: 0px 3px 0px 0px #671c2a;
+}
+.btnCe:hover{
+	color: white;
+}
+#zero{
+	width: 115px;
+}
+.btnEqual{
+	position: absolute;
+  	margin-left: 10px;
+  	height: 90px;
+  	border-radius: 8px;
+  	border: none;
+  	margin: 0 4px 10px 8px;
+  	background-color: #3a3a3a;
+  	width: 50px;
+  	color: white;
+  	box-shadow: 0px 3px 0px 0px #222121, inset -1px -3px 10px 1px #515151;
+}
+#footer{
+	font-size: 20px;
+	font-family: 'Play';
+}
+</style>
+<script>
+function valueOf(btn){
+	switch(btn){
+	case 'one':
+		return 1;
+	case 'two':
+		return 2;
+	case 'three':
+		return 3;
+	case 'four':
+		return 4;
+	case 'five':
+		return 5;
+	case 'six':
+		return 6;
+	case 'seven':
+		return 7;
+	case 'eight':
+		return 8;
+	case 'nine':
+		return 9;
+	case 'zero':
+		return 0;
+	case 'dot':
+		return '.';
+	case 'add':
+		return '+';
+	case 'minus':
+		return '-';
+	case 'multiply':
+		return '*';
+	case 'divide':
+		return '/';
+	}
+}
+
+$(document).ready(function(){
+	
+	//Print the value of button
+	$('.btn').on('click',function(){
+		var btnId = $(this).attr('id');
+
+		if($('#text1').text() === '0' && $('#result').text() === '0')
+			$('#text1').text(valueOf(btnId));
+
+		if($('#text1').text()!=='0' && $('#result').text() === '0')
+			$('#text1').text($('#text1').text()+valueOf(btnId));
+
+		if($('#result').text()!=='0'){
+			$('#result').text('0');
+			$('#text1').text('0');
+			$('#text1').text(valueOf(btnId));
+		}
+
+	});
+
+	//Functionality of AC button
+	$('.btnAC').on('click',function(){
+		$('#text1').text('0');
+		$('#result').text('0');
+	});
+
+	//Functionality of CE button
+	$('.btnCE').on('click',function(){
+		var currentText = $('#text1').text();
+		var updatedText = [];
+		currentText = currentText.split('');
+		if(currentText.length == 1)
+			$('#text1').text('0');
+
+		if($('#text1').text()!=='0'){
+			for(var i=0;i<currentText.length-1;i++){
+				updatedText.push(currentText[i]);
+			}
+
+			updatedText = updatedText.join('');
+
+			$('#text1').text(updatedText);
+		}		
+		
+	});
+
+	//Functionality of equal button
+	$('.btnEqual').on('click',function(){
+		var text = $('#text1').text();
+		var num1=[],op=[],flag=0,num2=[],numbers,highestOperator;
+		text = text.split('');
+
+		for(var i=0;i<text.length;i++){
+			if(operator(text[i])){
+				op.push(text[i]);
+				flag=1;
+			}else{
+				if(flag==1)
+					num2.push(text[i]);
+				else
+					num1.push(text[i]);
+			}
+		}
+		console.log(num1);
+		console.log(num2);
+		
+		if(op.length > 1){
+			highestOperator = op[0];
+			
+			for(var i=1;i<op.length;i++){
+				if(operatorPrecedence(op[i]) > operatorPrecedence(op[i-1]))
+					highestOperator = op[i];
+			}
+
+			console.log(highestOperator);
+		}else{
+			num1 = num1.join('');
+			num2 = num2.join('');
+
+			$('#result').html(operation(parseFloat(num1),parseFloat(num2),op[0]));
+		}
+	});
+});
+
+function operator(sym){
+	if(sym == '+' || sym == '-' || sym == '*' || sym == '/')
+		return true;
+
+	return false;
+}
+
+function operation(num1,num2,op){
+	switch(op){
+	case '+':
+		return num1+num2;
+	case '-':
+		return num1-num2;
+	case '*':
+		return num1*num2;
+	case '/':
+		return num1/num2;
+	}
+}
+
+function operatorPrecedence(op){
+	switch(op){
+	case '/':
+		return 4;
+	case '*':
+		return 3;
+	case '+':
+		return 2;
+	case '-':
+		return 1;
+	}
+}
+</script>
+
+</head>
+<body>
+<div class="container">
+	<div id="calculator">
+		<div id="top">
+			<h3 class="text-center">Calculator</h3>
+		</div>
+
+		<div id="display">
+			<div id="text">
+				<h3 id="text1">0</h3>
+			</div>
+			<div id="result">
+				<p id="result">0</p>
+			</div>
+		</div>
+
+		<div id="buttons">
+			<button class="btnAC" id="ac">AC</button>
+			<button class="btnCE" id="ce">CE</button>
+			<button class="btn" id="divide">&divide;</button>
+			<button class="btn" id="multiply">x</button>
+			<button class="btn" id="seven">7</button>
+			<button class="btn" id="eight">8</button>
+			<button class="btn" id="nine">9</button>
+			<button class="btn" id="minus">-</button>
+			<button class="btn" id="four">4</button>
+			<button class="btn" id="five">5</button>
+			<button class="btn" id="six">6</button>
+			<button class="btn" id="add">+</button>
+			<button class="btn" id="one">1</button>
+			<button class="btn" id="two">2</button>
+			<button class="btn" id="three">3</button>
+			<button class="btnEqual" id="equalButton">=</button>
+			<button class="btn" id="zero">0</button>
+			<button class="btn" id="dot">.</button>
+		</div>
+	</div>
+</div>
+<br><br>
+<footer>
+<h5 class="text-center" id="footer">Written and Coded by <a href="https://www.freecodecamp.com/harshtomar6" target="_blank">Harsh Tomar</a></h5>
+</footer>
+</body>
+</html>

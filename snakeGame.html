@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<script>
+	var step=0,id;
+	id = setInterval(moveSnake,20);
+	function moveSnake(){
+		if(step == 600){
+			clearInterval(id);
+		}else{
+			step++;
+			document.getElementById('snake').style.position = step+'px';
+		}
+	}
+</script>
+<style>
+#snake{
+	position: absolute;
+	background-color: yellow;
+	width:20px;
+	height: 5px;
+}
+</style>
+</head>
+<body>
+<div id="snake"></div>
+</body>
+</html>

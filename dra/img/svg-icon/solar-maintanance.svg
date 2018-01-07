@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px" height="512px"
+	 viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  width="512" height="512" x="223.5" y="24.5" bottomLeftOrigin="true"></sliceSourceBounds>
+	</sfw>
+</metadata>
+<g>
+	<g>
+		<g>
+			<rect x="82.581" y="66.064" fill="#FF395D" width="49.548" height="16.516"/>
+			<rect x="148.645" y="66.064" fill="#FF395D" width="49.548" height="16.516"/>
+			<rect x="214.709" y="66.064" fill="#FF395D" width="49.548" height="16.516"/>
+			<rect x="280.774" y="66.064" fill="#FF395D" width="49.548" height="16.516"/>
+			<rect x="66.064" y="82.581" fill="#FF395D" width="16.516" height="49.548"/>
+			<rect x="82.581" y="132.129" fill="#FF395D" width="49.548" height="16.516"/>
+			<rect x="132.129" y="82.581" fill="#FF395D" width="16.516" height="49.548"/>
+			<rect x="148.645" y="132.129" fill="#FF395D" width="49.548" height="16.516"/>
+			<rect x="198.193" y="82.581" fill="#FF395D" width="16.516" height="49.548"/>
+			<rect x="214.709" y="132.129" fill="#FF395D" width="49.548" height="16.516"/>
+			<rect x="264.258" y="82.581" fill="#FF395D" width="16.517" height="49.548"/>
+			<rect x="280.774" y="132.129" fill="#FF395D" width="49.548" height="16.516"/>
+			<rect x="66.064" y="148.645" fill="#FF395D" width="16.516" height="49.548"/>
+			<rect x="82.581" y="198.193" fill="#FF395D" width="49.548" height="16.516"/>
+			<rect x="132.129" y="148.645" fill="#FF395D" width="16.516" height="49.548"/>
+			<rect x="148.645" y="198.193" fill="#FF395D" width="49.548" height="16.516"/>
+			<rect x="198.193" y="148.645" fill="#FF395D" width="16.516" height="49.548"/>
+			<rect x="214.709" y="198.193" fill="#FF395D" width="49.548" height="16.516"/>
+			<rect x="264.258" y="148.645" fill="#FF395D" width="16.517" height="49.548"/>
+			<rect x="280.774" y="198.193" fill="#FF395D" width="49.548" height="16.516"/>
+			<rect x="330.322" y="82.581" fill="#FF395D" width="16.517" height="49.548"/>
+			<rect x="330.322" y="148.645" fill="#FF395D" width="16.517" height="49.548"/>
+			<path fill="#FF395D" d="M487.226,330.322v-33.031h-66.064v33.031h-66.064v-33.031h-66.064v33.031h-24.774v165.161h-33.032
+				V280.774h181.678V0H0v280.774h181.677v214.709h-49.548V512h132.129h16.517H512V330.322H487.226z M214.709,495.483h-16.516
+				V280.774h16.516V495.483z M198.193,214.709v49.548h-49.548v-49.548h-16.516v49.548H82.581v-49.548H66.064v49.548H16.516v-49.548
+				h49.548v-16.516H16.516v-49.548h49.548v-16.516H16.516V82.581h49.548V66.064H16.516V16.516h49.548v49.548h16.516V16.516h49.548
+				v49.548h16.516V16.516h49.548v49.548h16.516V16.516h49.548v49.548h16.517V16.516h49.548v49.548h16.517V16.516h49.548v49.548
+				h-49.548v16.516h49.548v49.548h-49.548v16.516h49.548v49.548h-49.548v16.516h49.548v49.548h-49.548v-49.548h-16.517v49.548
+				h-49.548v-49.548h-16.517v49.548h-49.548v-49.548H198.193z M437.678,313.807h33.032v16.516h-33.032V313.807z M305.549,313.807
+				h33.031v16.516h-33.031V313.807z M495.484,495.483h-214.71V346.839h214.71V495.483z"/>
+			<polygon fill="#FF395D" points="313.807,404.646 330.322,404.646 330.322,388.129 346.839,388.129 346.839,371.613 
+				330.322,371.613 330.322,355.097 313.807,355.097 313.807,371.613 297.291,371.613 297.291,388.129 313.807,388.129 			"/>
+			<rect x="429.419" y="371.613" fill="#FF395D" width="49.549" height="16.516"/>
+		</g>
+	</g>
+</g>
+</svg>

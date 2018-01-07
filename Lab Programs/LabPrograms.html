@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="programScript" ng-controller="programController as programCtrl">
+
+	<!--Navigation SideBar-->
+	<div class="sideBar">
+		<a href="javascript:void(0)" class="closeButton">&times;</a>
+		<a href="#home"><i class="fa fa-home fa-fw"> </i> Home</a>
+		<span id="programs"><i class="fa fa-globe fa-fw"> </i> Programs      <i class="fa fa-caret-down fa-fw" id="caret"></i></span>
+		<div class="program-list">
+			<a href="#">Program 1A</a>
+			<a href="program1b.html">Program 1B</a>
+			<a href="">Program 2A</a>
+			<a href="">Program 2B</a>
+			<a href="">Program 3A</a>
+			<a href="">Program 3B</a>
+			<a href="">Program 4</a>
+			<a href="">Program 5</a>
+			<a href="">Program 6</a>
+			<a href="">Program 7</a>
+			<a href="">Program 8</a>
+			<a href="">Program 9</a>
+			<a href="">Program 10A</a>
+			<a href="">Program 10B</a> 
+		</div>
+		<a href=""><i class="fa fa-user fa-fw"></i> About</a>
+	</div>
+
+	<!--Navigation toggle Button-->
+	<nav class="nav navbar-fixed-top">
+		<h1><i class="fa fa-bars fa-fw openButton"></i></h1>
+		<h1 data-toggle="modal" data-target="#modal"><i class="fa fa-search fa-fw searchIcon"></i></h1>	
+	</nav>
+
+	<!--Modal Search Bar-->
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<input type="text" class="form-control searchBar" placeholder="Enter Program Number or Name">
+		</div>
+	</div>
+
+	<!--Bug Modal-->
+	<div class="modal fade" id="bugModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="close">
+						<span aria-hidden="true" class="title">&times;</span>
+					</button>
+					<h4 class="modal-title text-center title"><i class="fa fa-bug fa-fw"></i> Report a Bug</h4>
+				</div>
+				<form action="bugPost.php">
+				<div class="modal-body">
+					<input type="text" class="form-control" placeholder="Bug Title"><br>
+					<textarea rows="5" cols="100" placeholder="Bug Description" class="form-control"></textarea><br>
+					<div class="row">
+					<div class="col-xs-6">
+						<input type="text" class="form-control" placeholder="Your Name">
+					</div>
+					<div class="col-xs-6">
+						<input type="email" class="form-control" placeholder="E-mail address">
+					</div></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn modal-dismiss-btn" data-dismiss="modal">Dismiss</button>
+					<input type="submit" class="btn modal-btn" value="Report">
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!--Code Modal-->
+	<div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="close">
+						<span aria-hidden="true" class="title">&times;</span>
+					</button>
+					<h4 class="modal-title text-center title"><i class="fa fa-code fa-fw"></i> Submit a better Code</h4>
+				</div>
+				<form action="test.php">
+				<div class="modal-body code">
+					<textarea rows="20" class="form-control code-editor"></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn modal-dismiss-btn" data-dismiss="modal">Cancel</button>
+					<button type="submit" class="btn modal-btn">Submit</button>
+				</div></form>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid home" id="home">
+
+		<div class="container heading-wraper">
+			<h1 ng-bind-html="programCtrl.data[0].programs" class="heading"></h1>	
+		</div>
+		<div class="col-md-3"></div>
+		<div class="col-md-6 col-xs-12 wrapper">
+<pre>
+  <span class="import">import java.util.Scanner</span>;
+
+  <span class="specifier">public class</span> student{
+    <span class="specifier">private</span><span class="keyword"> String</span> usn;
+    <span class="specifier">private</span><span class="keyword"> String</span> name;
+    <span class="specifier">private</span><span class="keyword"> String</span> branch;
+    <span class="specifier">private</span><span class="keyword"> long</span> phone;
+
+    <span class="specifier">public static </span> <span class="return-type">void</span> main(String[] args){
+      <span class="comment">//Instance of Scanner class</span>
+      Scanner input = <span class="import">new</span> Scanner(System.in);
+
+      <span class="keyword">int</span> n,i;
+      
+      System.out.println(<span class="string">"Enter the value of n"</span>);
+      n = input.<span class="method">nextInt()</span>;
+
+      <span class="comment">//Array of objects of type student</span>
+      student[] s = <span class="import">new</span> student[n];
+
+      <span class="keyword">for</span>(i=0;i< n;i++){
+        <span class="comment">//instance of each object</span>
+        s[i] = <span class="import">new</span> student();
+        System.out.println(<span class="string">"Enter USN of student "</span>+(i+1));
+        s[i].usn = input.<span class="method">next()</span>;
+        System.out.println(<span class="string">"Enter name of student "</span>+(i+1));
+        s[i].name = input.<span class="method">next()</span>;
+        System.out.println(<span class="string">"Enter branch of student "</span>+(i+1));
+        s[i].branch = input.<span class="method">next()</span>;
+        System.out.println(<span class="string">"Enter phone number of student "</span>+(i+1));
+        s[i].phone = input.<span class="method">nextLong()</span>;
+      }
+
+      System.out.println(<span class="string">"Details entered by you are:\n"</span>);
+      <span class="keyword">for</span>(i=0;i< n;i++){
+        System.out.println(<span class="string">"Student "</span>+(i+1));
+        System.out.println(<span class="string">"USN -> "</span>+s[i].usn+<span class="string">"\nName -> "</span>+s[i].name+<span class="string">"\nBranch -> "</span>+s[i].branch+<span class="string">"\nPhone -> "</span>+s[i].phone+<span class="string">"\n"</span>);
+      }
+    }
+  }
+	
+</pre>		
+		</div>
+		<div class="col-md-6"></div>				
+	</div>
+
+	<Br><Br>
+	<div class="container" id="output">
+	<div class="col-md-3"></div>
+	<div class="col-md-6 col-xs-12 output">
+		<h4 class="heading">Output:</h4>
+<pre id="pre">
+	Enter the value of n
+	2
+	Enter the usn of student 1
+	1js15cs042
+	Enter name of student 1
+	Harsh
+	Enter branch of student 1
+	cse
+	Enter phone number of student 1
+	8171899192
+	Enter usn of student 2
+	1js15cs034
+	Enter name of student 2
+	Abhay
+	Enter branch of student 2
+	cse
+	Enter phone number of student 2
+	9244115874
+
+	Details entered by you are:
+	Student 1
+	USN -> 1js15cs042
+	Name -> harsh
+	Branch -> cse
+	Phone -> 8171899192
+
+	Student 2
+	USN -> 1js15cs034
+	Name -> Abhay
+	Branch -> cse
+	Phone -> 9244115874
+</pre>
+	<br><br>
+	<div class="col-xs-6">
+		<a href="#home" class="btn btn-main"><i class="fa fa-chevron-left fa-fw"></i> Previous</a>	
+	</div>
+
+	<div class="col-xs-6">
+		<a href="program1b.html" class="btn btn-main">Next <i class="fa fa-chevron-right fa-fw"></i></a>
+	</div>
+	<div class="col-xs-12">
+		<br>
+		<button data-toggle="modal" data-target="#bugModal" class="btn btn-main"><i class="fa fa-bug fa-fw"></i> Report a Bug</button>
+		<br>
+	</div>
+	<div class="col-xs-12">
+		<br>
+		<button data-toggle="modal" data-target="#codeModal" class="btn btn-main" id="codeSubmit"><i class="fa fa-code fa-fw"></i> Submit a better Code</button>
+	</div>
+
+	</div>
+	<br><br>
+	</div>
+
+	<script src="controller.js"></script>
+	<script>
+		 var height = window.innerHeight
+		   	|| document.documentElement.clientHeight
+		   	|| document.body.clientHeight;
+
+		var width = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+
+		$(document).ready(function(){
+
+			for(var i=1;i<=20;i++)
+				$(".line-number").append(i+"<br>");
+
+			$(".home").css("height", height+"px");
+
+			console.log(width);
+
+			if(width <= 991)
+				$('.output').css("margin-left","0");
+
+			$(window).on("resize", function(){
+				if($(this).width() <= 991)
+					$('.output').css("margin-left","0");
+				else
+					$('.output').css("margin-left","25%");
+			});
+
+			$('#programs').on("click", function(){
+				if($(".program-list").css("display") == "block" || $(".program-list").css("display") == "inline-bock"){
+					$(".program-list").hide();
+					$("#caret").removeClass("fa-caret-up");
+					$("#caret").addClass("fa-caret-down");
+				}
+				else{
+					$(".program-list").show();
+					$("#caret").removeClass("fa-caret-down");
+					$("#caret").addClass("fa-caret-up");
+				}
+			});
+
+			$('.openButton').on("click", function(){
+				$(".sideBar").css("width", "250px");
+				$(this).hide();
+			});
+
+			$('.closeButton').on("click", function(){
+				$('.sideBar').css("width", '0px');
+				$(".openButton").show();
+			});
+		});
+
+
+	</script>
+</body>
+</html>

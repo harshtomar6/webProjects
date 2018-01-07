@@ -1,0 +1,111 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+    pre{
+        background-color: darkslategray;
+        color: white;
+        font-family: consolas;
+        font-size: 14px;
+        margin-left: 20px;
+    }
+    .line-number{
+        position:absolute;
+        background-color: grey;
+        color: white;
+        width: 30px;
+        font-family: consolas;
+        font-size: 14px;
+        padding: 10px 5px 0 5px;
+    }
+    .import{
+        color:yellow;
+    }
+    .specifier{
+        color:chocolate;
+    }
+    .return-type{
+        color:crimson;
+    }
+    .keyword{
+        color:darkred;
+    }
+    .string{
+        color:darkturquoise;
+    }
+    .method{
+        color:orangered;
+    }
+</style>
+</head>
+<body>
+    <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-xs-12 col-md-6">
+    <div class="line-number" id="line-number"></div>
+<pre id="pre">
+
+
+  <span class="import">import java.util.Scanner</span>;
+   
+  <span class="specifier">public</span> class java{
+    <span class="specifier">public</span> static <span class="return-type">void</span> main(String [] args){
+      Scanner input = <span class="import">new</span> Scanner();
+
+      Stack stack = <span class="import">new</span> Stack();
+        
+      <span class="keyword">int</span> ch,ele;
+
+      <span class="keyword">while</span>(<span class="keyword">true</span>){
+        System.out.println(<span class="string">"=========STACK MENU=========\n"</span>);
+        System.out.println(<span class="string">"1. Push\n2. Pop\n3. Display\n4. Exit\n"</span>);
+                        
+        ch = input.<span class="method">nextInt()</span>;
+                        
+        <span class="keyword">switch</span>(ch){
+        <span class="keyword">case</span> 1:
+          System.out.println(<span class="string">"Enter the element to be pushed\n"</span>);
+          ele = input.<span class="method">nextInt()</span>;
+          stack.<span class="method">push(ele)</span>;
+          System.out.println(<span class="string">"Element pushed successfully\n"</span>);
+          <span class="keyword">break</span>;
+        }
+      }
+    }
+
+    <span class="specifier">public</span> <span class="return-type">void</span> push(<span class="keyword">int</span> e){
+      stck[++top] = e;    
+    }
+                    
+  }
+</pre>
+        </div>
+        <div class="col-md-3"></div>
+        </div>                   
+<script>
+    var obj = {
+        x : 54,
+
+        increaseX : function(){
+            return this.x++;
+        }, 
+    };
+
+    var lineNumber = document.getElementById("line-number");
+    var pre = document.getElementById("pre");
+
+    lineNumber.style.height = pre.offsetHeight+'px';
+
+    var numberOfLines = parseInt(pre.clientHeight/17);
+
+    for(var i=1;i<=numberOfLines;i++){
+        lineNumber.innerHTML += i+'<br>';
+    }
+
+    lineNumber.innerHTML += '34';
+</script>
+</body>
+</html>

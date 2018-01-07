@@ -1,0 +1,101 @@
+.main{
+	margin: -10px;
+	padding: 0px;
+}
+.logo{
+	display: inline;
+	width: 90%;
+}
+li.active, a.active{
+	font-weight: bold;
+	color: black !important;
+	background-color: white;
+}
+ul.top{
+	display: inline;
+	list-style-type: none;
+	margin: 0px;
+	background-color: black;
+	padding: 20px 20px 20px 20px; 
+	width: 100%;
+	float: left;
+	box-sizing: border-box;
+}
+
+li.top, a.top{
+	display: inline;
+	color: white;
+	font-family: 'Quicksand', sans-serif;
+	text-decoration: none;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+li.top:hover, a.top:hover{
+	font-weight: bold;
+	border-bottom: 2px solid white;
+}
+div.head{
+	display: block;
+	margin-top: 10px;
+	padding: 10px;
+	overflow: auto;
+}
+h3{
+	
+	font-family: 'Quicksand', sans-serif;
+	font-size: 40px;
+	border-bottom: 2px solid black;
+	overflow: auto;
+}
+div.search{
+	display: inline;
+	margin-left: 50px;
+	overflow: auto;
+}
+input.search{
+	width: 150px;
+	height: 35%;
+	border: 2px solid grey;
+	border-radius: 5px;
+	padding-left: 10px;
+	font-family: 'Quicksand', sans-serif;
+}
+
+ul.side{
+	list-style-type: none;
+	margin: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 20%;
+	height: 100%;
+	box-sizing: border-box;
+	background-color: lightgrey;
+}
+
+div.content{
+	float: left;
+	max-width: 200px;
+	margin: 20px;
+	padding: 20px;
+	height: 200px;
+}
+
+img{
+	box-shadow: 5px 2px 20px grey;
+}
+
+li.side, a.side{
+	display: block;
+	font-family: 'Quicksand', sans-serif;
+	text-decoration: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+li.side:hover, a.side:hover{
+	background-color: lightgreen;
+	color: white;
+}

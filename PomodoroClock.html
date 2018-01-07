@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo|Oleo+Script|Lobster|Architects+Daughter|Economica|Orbitron" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body{
+	background-color: #005e69;
+}
+#heading{
+	color: #e0e019;
+	font-size: 60px;
+	font-family: 'Lobster';
+	text-shadow: 5px 5px 2px rgb(0, 0, 0);
+}
+#sub{
+	color: white;
+	font-size: 20px;
+	font-family: 'Comfortaa';
+	font-weight: bold;
+}
+.opButtons{
+	font-family: 22px;
+	font-weight: bold;
+}
+.display{
+	background-color: transparent;
+	border-radius: 10px;
+}
+p{
+	color: white;
+	font-size: 26px;
+	font-weight: bold;
+}
+.clock{
+	width: 350px;
+	height: 350px;
+	border: 5px solid #e0e019;
+	border-radius: 100%;
+}
+#status{
+	font-size: 40px;
+	font-weight: bold;
+	font-family: 'Comfortaa';
+	color: white;
+}
+#current{
+	color: white;
+	font-weight: bold;
+	font-size: 80px;
+	font-family: 'Comfortaa';
+}
+#playButton{
+	margin-left: 10px;
+	margin-right: 50px;
+}
+.btn{
+	background-color: #005e69;
+	border: 1px solid #e0e019;
+	color: #e0e019;
+}
+.btn:hover{
+	color: #005e69;
+	background-color: #e0e019;
+}
+#footer{
+	font-size: 20px;
+	font-family: 'Comfortaa';
+	color: white;
+	text-shadow: 2px 2px 2px rgb(0, 0, 0);
+}
+</style>
+<script>
+
+var isPaused=true;
+
+$(document).ready(function(){
+	//Button functionalities
+
+	$('#plusButton1').on('click',function(){
+		$('#num1').text(parseInt($('#num1').text())+1);
+	});
+
+	$('#minusButton1').on('click',function(){
+		if(parseInt($('#num1').text())!=1)
+			$('#num1').text(parseInt($('#num1').text())-1);
+	});
+
+	$('#plusButton2').on('click',function(){
+		$('#num2').text(parseInt($('#num2').text())+1);
+		if(parseInt($('#num2').text()) < 10)
+			$('#current').text("0"+$('#num2').text()+":00");
+		else
+			$('#current').text($('#num2').text()+":00");
+	});
+
+	$('#minusButton2').on('click',function(){
+		if(parseInt($('#num2').text())!=1){
+			$('#num2').text(parseInt($('#num2').text())-1);
+			if(parseInt($('#num2').text()) < 10)
+				$('#current').text("0"+$('#num2').text()+":00");
+			else
+				$('#current').text($('#num2').text()+":00");
+		}
+	});
+
+	$('#playButton').on('click',function(){
+		if(isPaused)
+			playTimer();
+		else
+			pauseTimer();
+	});
+
+	$('#stopButton').on('click',function(){
+		isPaused = true;
+		$('#playButton').html('<i class="fa fa-play"></i>');
+		clearInterval(time);
+		$('#status').text("Session");
+
+		if(parseInt($('#num2').text()) < 10)
+			$('#current').text("0"+$('#num2').text()+":00");
+		else
+			$('#current').text($('#num2').text()+":00");
+	});
+});
+
+function playTimer(){
+	var sessionLength = parseInt($('#num2').text());
+	var minutes = sessionLength-1, seconds = 59;
+	var i=1;
+
+	isPaused = false;
+	$('#playButton').html('<i class="fa fa-pause"></i>');
+
+	time = setInterval(function(){
+		if(minutes == 0 && seconds == 0){
+			clearInterval(time);
+			playBreak();
+			minutes = sessionLength-1;
+			seconds = 59;	
+		}
+		else if(seconds == 0){
+			minutes--;
+			seconds = 59;
+		}
+
+		if(minutes < 10 && seconds < 10){
+			$('#current').text('0'+minutes+':0'+seconds);
+			seconds--;
+		}
+		else if(seconds < 10){
+			$('#current').text(minutes+':0'+seconds);
+			seconds--;	
+		}
+		else if(minutes < 10){
+			$('#current').text('0'+minutes+':'+seconds);
+			seconds--;
+		}
+		else{
+			$('#current').text(minutes+':'+seconds);
+			seconds--;	
+		}	
+	}, 1000);
+
+}
+
+function pauseTimer(){
+	isPaused = true;
+	$('#playButton').html('<i class="fa fa-play"></i>');
+
+	clearInterval(time);	
+}
+
+function playBreak(){
+	var breakLength = parseInt($('#num1').text());
+	var minutes = breakLength-1, seconds = 59;
+
+	$('#status').text("Break");
+
+	breakTime = setInterval(function(){
+		if(minutes == 0 && seconds == 0){
+			clearInterval(breakTime);
+			$('#current').text("00:00");
+		}
+		else if(seconds == 0){
+			minutes--;
+			seconds = 59;
+		}
+
+		if(minutes < 10 && seconds < 10){
+			$('#current').text('0'+minutes+':0'+seconds);
+			seconds--;
+		}
+		else if(seconds < 10){
+			$('#current').text(minutes+':0'+seconds);
+			seconds--;	
+		}
+		else if(minutes < 10){
+			$('#current').text('0'+minutes+':'+seconds);
+			seconds--;
+		}
+		else{
+			$('#current').text(minutes+':'+seconds);
+			seconds--;	
+		}	
+	}, 1000);
+}
+
+</script>
+</head>
+
+<body>
+<div class="container">
+	<h3 class="text-center" id="heading"><i class="fa fa-clock-o fa-fw"></i> Pomodoro Clock</h3>
+</div>
+<br><br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 col-xs-1"></div>
+		<div class="col-md-2 col-xs-5">
+			<h5 id="sub" class="text-center">Break Length</h5><br>
+			<div class="row">
+				<div class="col-md-4 col-xs-4">
+					<button type="button" class="btn opButtons" id="minusButton1">-</button>
+				</div>
+				<div class="col-md-4 col-xs-4">
+					<div class="display">
+						<p id="num1">5</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-4">
+					<button type="button" class="btn opButtons" id="plusButton1">+</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2 col-xs-1"></div>
+		<div class="col-md-2 col-xs-5">
+			<h5 id="sub" class="text-center">Session Length</h5><br>
+			<div class="row">
+				<div class="col-md-4 col-xs-4">
+					<button type="button" class="btn opButtons" id="minusButton2">-</button>
+				</div>
+				<div class="col-md-4 col-xs-4">
+					<div class="display">
+						<p id="num2">25</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-4">
+					<button type="button" class="btn opButtons" id="plusButton2">+</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-xs-3"></div>
+	</div>
+	<br><br>
+	<div class="row">
+		<div class="col-md-4 col-xs-1"></div>
+		<div class="col-md-4 col-xs-10">
+			<div class="clock">
+				<br><br>
+				<h3 class="text-center" id="status">Session</h3>
+				<br>
+				<p class="text-center" id="current">25:00</p>
+			</div>
+		</div>
+		<div class="col-md-4 col-xs-1"></div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-5 col-xs-4"></div>
+		<div class="col-md-2 col-xs- 4">
+			<div class="btnDiv">
+				<button type="button" class="btn" id="playButton"><i class="fa fa-play"></i></button>
+				<button type="button" class="btn" id="stopButton"><i class="fa fa-stop"></i></button>
+			</div>
+		</div>
+		<div class="col-md-5 col-xs-4"></div>
+	</div>
+</div>
+<br><br><br><br>
+<footer>
+<h5 class="text-center" id="footer">Written and Coded by <a href="https://www.freecodecamp.com/harshtomar6" target="_blank">Harsh Tomar</a></h5>
+</footer>
+</body>
+</html>
