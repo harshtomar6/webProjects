@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DRA-Infratech</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/animate.css">
+<link rel="stylesheet" type="text/css" href="css/mdb.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+   $(window).scroll(function(){
+      var sticky = $('.sticky'),
+          scroll = $(window).scrollTop();
+
+      if (scroll >= 35) sticky.addClass('wrap-all-shrink');
+      else sticky.removeClass('wrap-all-shrink');
+    });
+</script>
+<script type="text/javascript">
+   $(document).ready(function(){
+      if ( $(window).width() > 768) {      
+           //Add your JavaScript for Large screens here
+        $('li, .subdrop-li-btn').hover(function(){
+          $('.sub-ul-cls-js', this).stop().slideToggle(100);
+        });
+        
+      } 
+      else {
+        //Add your javascript for small screens here 
+       $('li, .subdrop-li-btn').click(function(){
+           var id = $(this).attr('id');
+           $('#'+id+'-li').stop().slideToggle(200);
+         });
+
+        
+      }
+   });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.side-menu-btn').click(function(){
+       $('.ul-main').toggleClass('row-nav-list, ul-main-toggle')
+    });
+  });
+</script>
+</head>
+<style type="text/css">
+*{
+margin: 0;
+padding: 0;
+}
+body
+{
+font-family: 'Raleway', sans-serif;
+}
+p,ul li,td,div,th
+ {
+  font-family: 'Raleway', sans-serif;
+  line-height: 22px;
+  letter-spacing: 1px;
+}
+a,input
+ {
+  font-family: 'Raleway', sans-serif;
+}
+h1,h2,h3,h4,h5,h6 
+{
+  font-family: 'Raleway', sans-serif;
+}
+th,tr,td {border:1px solid #bdbdbd;text-align: center;}
+/*
+td,th
+{text-align: center;}*/
+.wrap-all{
+background: transparent;
+/*border-bottom:1px solid #eee3;*/
+clear: both;
+display: block;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+z-index: 99999;
+}
+.wrap-all-shrink{
+background: #fff;
+border-bottom: 1px solid #eee;
+clear: both;
+display: block;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+}
+
+.wrap-all-shrink .header-container-2 ul.ul-main li a
+{
+top: 0;
+left: 0;
+right: 0;
+font-size: 13px;
+transition-property: all;
+transition-duration:400ms;
+transition-timing-function: ease-in-out;
+}
+.wrap-all-shrink .header-container-2 .side-menu-btn 
+{
+color: #fff !important;
+}
+/*custom css*/
+.fa-inr {color: #f94667; }
+.all-btn {background-color: #f94667;border-radius: 3px;padding:5px 10px;color: #fff;}
+.all-btn:hover {color: #fff;}
+.shadow {-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);}
+.padding-lft-rht
+{
+padding:0px 17px 0px 0px;
+}
+.wrap-all-shrink .header-container-2 ul.ul-main li ul.sub-ul-1-li li a 
+{
+color: #fff !important;
+}
+
+/*custom css*/
+
+.wrap-all-shrink .header-container-2 .ul-main li.solar-calc  
+{
+background-color: #f94667;
+border-radius: 3px;
+width: 140px;
+margin-left: 14px;
+}
+
+.wrap-all-shrink .header-container-2 ul.ul-main li.solar-calc a
+{
+color: #fff !important;
+font-size: 11px;
+}
+
+.ul-main li.solar-calc  
+{
+font-size: 12px;
+background-color: #f94667;
+border-radius: 3px;
+width: 148px;
+margin-left: 14px;
+}
+.ul-main li.solar-calc a  
+{
+font-size: 13px;
+text-align: center;
+}
+
+.ul-main li.solar-calc a  .fa
+{
+color: #fff;
+line-height: 32px;
+}
+
+.side-menu-btn 
+{
+background-color: #ff738c;
+border: none;
+padding: 4px;
+}
+
+.ul-main li a .fa
+{
+color:#fe6c86;
+font-size:22px;
+margin-right: 4px;
+}
+/*service page*/
+.serv-imag img
+{
+height: 486px;
+width: 100%;
+}
+.off-grid-padd 
+{
+padding: 20px !important;
+text-align: justify;
+}
+.Residential {
+width: 100%;
+float: left;
+padding: 10px;
+box-shadow:0px 1px 1px 0px #999;
+margin-bottom: 5px;
+}
+.container-fluid 
+{
+padding-left: 0px;
+padding-right: 0px;
+}
+.margin-details 
+{
+margin-top: 40px;
+}
+.details-top{
+width: 100%;
+float: left;
+padding: 76px 0px;
+height: 331px;
+}
+
+.details-bg
+{
+background-image: url(img/baner1.jpg);
+background-size: cover;
+background-position: center;
+}
+.details-page
+{
+width: 100%;
+float: left;
+}
+.our-service-text
+{
+width: 100%;
+float: left;
+margin-bottom: 50px;
+}
+.our-service-text .solar-icon::after
+{
+content: ' ';
+position: absolute;
+left: 455px;
+top: 33px;
+background-color:#6b6b6b;
+width:90px;
+height:2px;
+}
+
+.our-service-text .solar-icon::before
+{
+content: ' ';
+position: absolute;
+right: 455px;
+top: 33px;
+background-color:#6b6b6b;
+width: 90px;
+height: 2px;
+}
+.service-details
+{
+width: 100%;
+float: left;
+padding: 0px 7px;
+margin-bottom: 10px;
+}
+.solar-icon
+{
+text-align: center;
+position: relative;
+}
+.bg-grey 
+{
+background-color: #f0f0f0;
+}
+.service-inner
+{width: 100%;
+float: left;
+}
+h1.service-heading {
+color: #ff395d;
+font-size: 20px;
+font-weight: 600;
+color:#5a5959;
+text-transform: uppercase;}
+
+h1.service-heading img{
+width:2%;
+margin: 0 auto;
+vertical-align: middle;
+}
+
+.service-inner p 
+{
+text-align: justify;
+}
+.advantage-outer,.advantage{width: 100%;float: left;}
+.advantage-inner {width: 50%;float: left;padding: 10px;}
+/*service page*/
+
+.pad-all
+{
+padding: 20px;
+}
+
+.wrap-all a
+{
+color: #fff !important;
+}
+
+.wrap-all-shrink a,.wrap-all-shrink span
+{
+color: #000 !important; 
+}
+
+.footer-logo
+{
+width: 100%;
+float: left;
+padding: 20px 0px;
+}
+.footer-logo img
+{
+width: 20%;
+margin: 0 auto;
+}
+
+/*footer section*/
+.footer{width: 100%;float: left;background-color: #232e38;border-bottom: 1px solid #4f4f4f;}
+.footer .footer-inner
+{
+width: 100%;
+float: left;
+padding: 20px 55px;
+}
+
+.footer .footer-inner ul
+{
+float: left;
+margin-bottom: 0px;
+}
+.footer .footer-inner ul li
+{
+float: left;
+border-right: 1px solid #666;
+line-height: 25px;
+}
+.footer .footer-inner ul li:last-child
+{
+border-right: 0px;
+}
+.footer .footer-inner ul li a
+{
+text-align: center;
+color: #9c9c9c;
+padding: 0px 34px;
+text-transform: uppercase;
+font-size: 13px;
+}
+ul.social-media
+{
+float: left;
+}
+ul.social-media li.social-icon
+{
+float: left;
+border-right: none;
+}
+ul.social-media li.social-icon .fa
+{
+color: #b1b1b1;
+border-radius: 100%;
+border: 1px solid #777;
+width: 36px;
+height: 36px;
+padding: 9px;
+font-size: 18px;
+}
+ul.social-media li.social-icon .fa:hover
+{
+background-color: #ff395d;
+color: #fff;
+}
+/*footer-section*/
+.bottom-footer
+{
+width:100%;
+float: left;
+background-color:rgba(12, 24, 35, 0.9);
+padding: 10px 0px;
+}
+
+/*get in touch*/
+.get-in-touch
+{
+width: 100%;
+float: left;
+padding: 10px 0px;
+background-color:#f0f0f0;
+}
+.getin-text
+{
+width: 100%;
+float: left;
+text-align: center;
+margin-bottom:18px;
+}
+.getin-text h1{color:#ff395d;margin: 0;}
+.getin-text .solar-icon::after
+{
+content: ' ';
+position: absolute;
+left: 455px;
+top: 33px;
+background-color:#6b6b6b;
+width:90px;
+height:2px;
+}
+.getin-text .solar-icon::before
+{
+content: ' ';
+position: absolute;
+right: 455px;
+top: 33px;
+background-color:#6b6b6b;
+width:90px;
+height:2px;
+}
+.contact-form
+{
+width:100%;
+float: left;
+padding:59px 10px 39px;
+}
+.contact-form input
+{
+width: 100%;
+float: left;
+padding: 20px;
+border:none;
+border-radius: 3px;
+margin-bottom: 20px;
+border-bottom: 1px solid #dbdbdb;
+}
+.contact-form input[type="number"]{
+background-color: transparent;
+border: none;
+border-radius: 0;
+outline: none;
+width: 100%;
+font-size: 1rem;
+background-color: #fff;
+}
+.contact-form  textarea
+{
+min-width: 1130px;
+float: left;
+padding: 13px;
+margin-top: 20px;
+min-height: 95px;
+background-color: #fff;
+border: none;
+border-radius: 5px;
+margin-bottom: 20px;
+border: 1px solid #dbdbdb;
+}
+.send-btn
+{
+width: 100%;
+float: left;
+text-align: center;
+}
+button.send-msg
+{
+background-color: #000;
+color: #fff;
+padding: 10px 20px;
+border-radius: 3px;
+margin-top: 10px;
+border:none;
+}
+/*get in touch end*/
+/*custom css*/
+.recomand-div {width: 100%;float: left;height: 174px;}
+.header-container-1{
+background: #fff;
+color: #fff;
+border-bottom:1px solid #eee3;
+background-color: transparent;
+}
+.row-wrapper-1{
+width: 1120px;
+padding-top: 5px;
+padding-bottom: 5px;
+background: #fff;
+margin: 0 auto;
+max-width: 100%;
+display: flex;
+display: -webkit-flex;
+font-size: 13px;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+    background-color: rgba(0, 255, 255, 0);
+}
+.wrap-all-shrink .row-wrapper-1{
+width: 1120px;
+padding-top: 5px;
+padding-bottom: 5px;
+background: #fff;
+margin: 0 auto;
+max-width: 100%;
+display: flex;
+display: -webkit-flex;
+font-size: 13px;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+}
+.col-left-top{
+width: 50%;
+}
+.col-right-top{
+width: 50%;
+}
+.top-left-ul{
+
+}
+.top-right-ul{
+float: right;
+}
+/*Container 2*/
+.header-container-2{
+    background-color: rgba(0, 255, 255, 0);
+}
+.row-wrapper-2{
+width: 1120px;
+padding-top: 14px;
+padding-bottom: 10px;
+background: #111;
+color: #fff;
+margin: 0 auto;
+max-width: 100%;
+display: flex;
+display: -webkit-flex;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+    background-color: rgba(0, 255, 255, 0);
+}
+.wrap-all-shrink .row-wrapper-2{
+width: 1120px;
+padding-top: 14px;
+padding-bottom: 10px;
+/*background: #fff;*/
+margin: 0 auto;
+max-width: 100%;
+display: flex;
+display: -webkit-flex;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+}
+.col-left-menu{
+width: 20%;
+}
+.col-center-menu{
+width: 80%;
+}
+.col-right-menu{
+width: 0%;
+}
+.col-left-menu img{
+  width: 250px;
+  transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+}
+.wrap-all-shrink .col-left-menu img{
+  width: 160px;
+  transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+}
+.search-input{
+height: 35px;
+margin-top: 10px;
+}
+.wrap-all-shrink .search-input{
+height: 30px;
+margin-top: 10px;
+}
+/*===========Nav Menu============*/
+.nav-menu-list{
+background: cyan;
+margin-top: 5px;
+}
+.row-nav-list{
+  float: right;
+/*width: 1120px;*/
+height: 35px;
+
+margin: 0px auto;
+background-color: rgba(37, 37, 37, 0);
+}
+.row-nav-list .ul-main{
+list-style: none;
+margin-top: -10px;
+}
+.ul-main li{
+/*display: flex;
+display: -webkit-flex;*/
+float: left;
+width: 116px;
+height: 35px;
+text-align: center;
+line-height: 35px;
+background-color: rgba(37, 37, 37, 0);
+}
+
+.ul-main li:hover
+{
+border-bottom:1px solid #fc6883;
+}
+.ul-main li a{
+color: #111;
+text-decoration: none;
+display: block;
+font-size:15px;
+}
+.sub-ul{
+background: #ccc;
+list-style: none;
+display: none;
+position: absolute;
+  z-index: 10;
+  width:202px;
+}
+.sub-ul li{
+background: #252525;
+float: none;
+list-style: none;
+border-bottom: 1px solid #484848;
+/*display: none;*/
+width: 100%;
+padding: 5px;
+height: 40px;
+}
+.sub-ul li  a{
+font-size: 13px;
+}
+
+.sub-ul li:hover
+{
+background-color:#f94667;
+}
+
+
+ul.sub-ul .sub-to-sub-ul{
+  position: relative;
+right: 158px !important;
+top: -35px;
+display: none;
+}
+.banner-nopadding 
+{
+padding-left: 0px;
+padding-right: 0px;
+}
+/*Sub to sub dropdown menu*/
+/*nav-menu-list End*/
+
+/*===========Nav Menu============*/
+.wrap-all-shrink ul.ul-main li > ul.sub-ul a
+{
+color: #fff !important;
+font-size: 12px;
+}
+
+
+/*===========MEDIA============*/
+
+@media (min-width: 100px) and (max-width: 767px){
+.wrap-all{
+background:transparent;
+border-bottom: 1px solid #eee;
+clear: both;
+display: block;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+}
+.wrap-all-shrink{
+background: #fff;
+border-bottom: 1px solid #eee;
+clear: both;
+display: block;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+}
+.header-container-1{
+background:transparent;
+border-bottom:1px solid #eeeeee4d;
+}
+.row-wrapper-1{
+width: 1120px;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-left: 10px;
+padding-right: 10px;
+background: transparent;
+margin: 0 auto;
+max-width: 100%;
+display: flex;
+display: -webkit-flex;
+font-size: 13px;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+}
+.wrap-all-shrink .row-wrapper-1{
+width: 1120px;
+padding-top: 5px;
+padding-bottom: 5px;
+background: #fff;
+margin: 0 auto;
+max-width: 100%;
+display: flex;
+display: -webkit-flex;
+font-size: 13px;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+}
+.col-left-top{
+width: 50%;
+}
+.col-right-top{
+width: 50%;
+}
+.top-left-ul{
+
+}
+.top-right-ul{
+float: right;
+}
+/*Container 2*/
+.header-container-2{
+background: transparent;
+}
+.row-wrapper-2{
+width: 1120px;
+padding-top: 5px;
+padding-bottom:5px;
+padding-left: 10px;
+padding-right: 10px;
+background: transparent;
+margin: 0 auto;
+max-width: 100%;
+display: flex;
+display: -webkit-flex;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+flex-wrap: wrap;/*This code change sequence*/
+}
+.wrap-all-shrink .row-wrapper-2{
+width: 1120px;
+padding-top: 5px;
+padding-bottom:5px;
+background: #fff;
+margin: 0 auto;
+max-width: 100%;
+display: flex;
+display: -webkit-flex;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+flex-wrap: wrap;/*This code change sequence*/
+}
+.col-left-menu{
+width: 80%;
+order: 1;
+
+}
+.col-center-menu{
+width: 100%;
+order: 3;
+}
+.col-right-menu{
+width: 20%;
+order: 1;
+}
+.col-left-menu img{
+  width: 110px;
+  transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+}
+.wrap-all-shrink .col-left-menu img{
+width: 110px;
+  transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+}
+.nav-menu-list{
+    background-color: rgba(0, 255, 255, 0);
+margin-top: 0px;
+height: 100%;
+}
+.row-nav-list{
+width: 1160px;
+height: 100%;
+max-width: 100%;
+margin: 0px auto;
+background: orange;
+}
+.row-nav-list .ul-main{
+list-style: none;
+width: 75%;
+height: 100%;
+background: #252525;
+position: fixed;
+top: 10px;
+left: -100%;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+/*display: none;*/
+}
+.row-nav-list .ul-main-toggle{
+list-style: none;
+width: 75%;
+height: 100%;
+background: #252525;
+position: fixed;
+top: 10px;
+left: 0%;
+transition-property: all;
+transition-duration: 400ms;
+transition-timing-function: ease-in-out;
+/*display: none;*/
+}
+.ul-main li:first-child{
+padding-top: 30px;
+}
+.ul-main li{
+/*display: flex;
+display: -webkit-flex;*/
+float: none;
+width: 100%;
+height: auto;
+text-align: left;
+text-indent: 10px;
+line-height: 45px;
+border: none;
+border-bottom: 1px solid #3a3a3a;
+
+}
+.ul-main li a{
+color: #fff;
+text-decoration: none;
+display: block;
+}
+.sub-ul{
+background: #484848;
+list-style: none;
+display: none;
+position: static !important;
+  z-index: 10;
+}
+.sub-ul li{
+background: #111;
+float: none;
+list-style: none;
+border-bottom: 1px solid #3a3a3a;
+/*display: none;*/
+}
+.sub-ul li:first-child{
+padding-top: 0px;
+}
+.sub-ul{
+background: blue;
+position: inherit;
+list-style: none;
+display: none;
+}
+.sub-ul li{
+background: #111;
+list-style: none;
+text-indent: 30px;
+/*display: none;*/
+}
+
+ul.sub-ul .sub-to-sub-ul{
+  position: relative;
+left: 0px !important;
+top: 2px;
+height: 100%;
+display: none;
+}
+ul.sub-to-sub-ul li{
+  background: #000;
+}
+ul.sub-ul .sub-to-sub-ul li{
+ float: none;
+ border-bottom: 1px solid #3a3a3a;
+ text-indent: 60px;
+}
+ul.sub-ul .sub-to-sub-ul li:first-child{
+ border-top: 1px solid #3a3a3a;
+}
+.search-input{
+height: 30px;
+margin-top: 0px;
+}
+/*Singal Menu right Side*/
+.ul-main-one{
+list-style: none;
+margin-top: 10px;
+padding: 0px;
+}
+.ul-main-one{
+float: right;
+}
+.ul-main-one li{
+/*display: flex;
+display: -webkit-flex;*/
+float: left;
+width:60px;
+height: 30px;
+text-align: center;
+line-height: 30px;
+background: #e93538;
+margin-left: 7px;
+
+/*border-left: 1px solid #484848;*/
+}
+.ul-main-one li:hover{
+/*display: flex;
+display: -webkit-flex;*/
+float: left;
+width:60px;
+height: 30px;
+text-align: center;
+line-height: 30px;
+background: #111;
+
+/*border-left: 1px solid #484848;*/
+}
+.ul-main-one li a{
+color: #fff;
+text-decoration: none;
+display: block;
+font-size: 13px;
+}
+.ul-main-one li a:hover{
+color: #fff;
+text-decoration: none;
+display: block;
+font-size: 13px;
+}
+.subdrop-li-btn{
+color: #111;
+text-decoration: none !important;
+}
+.sub-ul-one {
+    list-style: none;
+    display: none;
+    position: absolute;
+    z-index: 10;
+    /* margin-left: -67px; */
+    right: 47px;
+}
+.sub-ul-one li{
+width: 120px;
+position: relative;
+top: 0px;
+left: 0px;
+background: #252525;
+float: none;
+list-style: none;
+border-bottom: 1px solid #484848;
+text-align: center;
+text-indent: 10px;
+/*display: none;*/
+}
+.sub-ul-one li:hover{
+width: 120px;
+position: relative;
+top: 0px;
+left: 0px;
+background: #111;
+float: none;
+list-style: none;
+border-bottom: 1px solid #484848;
+text-align: center;
+text-indent: 10px;
+/*display: none;*/
+}
+.box {padding: 0px; }
+.who-we-padding {padding: 0px;text-align: justify;}
+.serv-imag img {height: 150px !important}
+.serv-imag h1.service-heading  {font-size: 13px !important;}
+.padding-lft-rht {padding: 0px;}
+.footer-inner {padding: 0px !important;}
+.footer-inner ul li {padding: 3px 1px;}
+.footer-inner ul li a {padding:0px 10px !important;}
+}
+
+/*===========MEDIA============*/
+
+</style>
+<body>
+<div class="wrap-all sticky"  >
+ <!--  <div class="header-container-1">
+       <div class="row-wrapper-1">
+        <div class="col-left-top">
+           <div class="top-left-ul">
+             <span><i class="fa fa-phone"></i>&nbsp;Call us 1900-098</span>
+           </div> -->
+        <!-- </div> --><!-- col-left-top -->
+        <!-- break col -->
+        <!-- <div class="col-right-top">
+           <div class="top-right-ul">
+              <span class="hidden-xs"><i class="fa fa-phone"></i>&nbsp; 1900-0981110</span>
+              <a href=""><span><i class="fa fa-pen"></i>&nbsp;Sign Up</span></a>
+              <a href=""><span><i class="fa fa-pen"></i>&nbsp; Log In</span></a>
+           </div>
+        </div> --><!-- col-left-top -->
+        <!-- break col -->
+      <!-- </div> --><!-- row-wrapper-1 -->
+  <!-- </div> --><!--header-container-1-->
+   <!-- ===============row container break============= -->
+  <div  class="header-container-2">
+     <div class="row-wrapper-2 ">
+        <div class="col-left-menu">
+          <a href="index.html"><img src="img/logo.png"></a>
+        </div><!-- col-left-men --> 
+        <!-- break col menu -->
+        <div class="col-center-menu">
+           <!-- ==========NAV MENU LIST START============= -->
+              <div class="nav-menu-list" >
+                <div class="row-nav-list">
+                   <div class="my-nav">
+                    <ul class="ul-main" style="color: #111;">
+                       <!-- <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li> -->
+                       <li><a href="#about"  class="js-section-scroll"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>About Us<span class="caret"></span></a>
+                        <ul id="sub-ul-1-li" class="sub-ul sub-ul-cls-js">
+                          <li><a href="index.html#about"  class="">Company Profile</a></li>
+                          <li><a  class="subdrop-li-btn" href="index.html#service">What We Do</a></li>
+                          <!-- <li><a href="#">Technical Service</a></li> -->
+                        </ul>
+                      </li>
+                       <li><a href="#0"><i class="fa fa-list-alt" aria-hidden="true"></i>Services<span class="caret"></span></a>
+                        <ul id="sub-ul-1-li" class="sub-ul sub-ul-cls-js">
+                          <li><a href="off-grid.html">OFF-Grid Solar Power Plant</a></li>
+                          <li><a href="on-grid.html">ON-Grid Solar Power plant</a></li>
+                          <li><a href="hybrid.html">Hybrid Solar Power Plant</a></li>
+                          <!-- <li><a href="#">Technical Service</a></li> -->
+                        </ul>
+                       </li>
+                       <!-- <li class="li-bg-color"><a id="sub-ul-1" class="subdrop-li-btn" href="index.html#service"><i class="fa fa-file-text-o" aria-hidden="true"></i>What We Do</a> -->
+                          <!--  <ul id="sub-ul-1-li" class="sub-ul sub-ul-cls-js">
+                             <li><a href="#">Maintenance & Repair</a></li>
+                             <li><a href="#">Offshore Wind Energy</a></li>
+                             <li><a href="#">Remote Monitoring</a></li>
+                             <li><a href="#">Technical Service</a></li>
+                           </ul> -->
+                       </li>
+                       <li><a href="#0"  class=""><i class="fa fa-cog" aria-hidden="true"></i>Career</a></li> 
+                      <li><a href="index.html#team"  class=""><i class="fa fa-users" aria-hidden="true"></i>Team</a></li>
+                        <!-- <li class="li-bg-color"><a id="sub-ul-2" class="subdrop-li-btn  js-section-scroll" href="#"><i class="fa fa-angle-down"></i>&nbsp;Portfolio</a> -->
+                          <!--  <ul id="sub-ul-2-li" class="sub-ul sub-ul-cls-js">
+                             <li><a href="#">Link 1</a></li>
+                             <li><a href="#">Link 2</a></li>
+                             
+                           </ul>
+                       </li> -->
+                       <li><a href="index.html#form" class=""><i class="fa fa-phone" aria-hidden="true"></i>Contact Us</a></li>
+                       <li  class="solar-calc"><a href="#0" class=""><i class="fa fa-calculator" aria-hidden="true"></i>Solar Calculator</a></li> 
+                     </ul>
+                    </div>
+                </div><!-- row-nav-list -->
+              </div><!-- nav-menu-list -->
+              <!-- ==========NAV MENU LIST END============= -->
+<!-- =========LIST NAV MENU=========== -->
+        </div><!-- col-center-men --> 
+        <!-- break col menu -->
+        <div class="col-right-menu">
+            <button class="visible-xs side-menu-btn " style="width: 40px;"><a href="#"><i class="fa fa-list"></i></a></button>
+        </div><!-- col-right-men --> 
+        <!-- break col menu -->
+    </div><!-- row-wrapper-2 -->
+  </div><!-- header-container-2 -->
+   <!-- ===============row container break============= -->
+</div><!-- wrap-all -->
+
+<!-- =========LIST NAV MENU=========== -->
+
+
+<!-- <div class="col-md-24  col-lg-24  col-sm-24  container-fluid  banner-nopadding"> --><!-- main slider -->
+<!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">  -->
+    <!-- Indicators -->
+   <!-- <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol> -->
+
+    <!-- Wrapper for slides -->
+   <!--  <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/banner3.jpg" alt="Los Angeles" style="width:100%;"  class="img-responsive">
+        <div class="banner-text">
+          <div class="container">
+            <div class="slider-caption">
+                <caption>
+                  <h1 class="wow fadeInDown" data-wow-delay="1.2s">DRA Infratech</h1>
+                  <p class="wow fadeInDown" data-wow-delay="1.4s">A business, also known as an enterprise, agency, or a firm,<br> is an entity involved in the provision of goods, services.</p>
+                  <button  type="submit" class="slider-btn  wow fadeInDown" data-wow-delay="1.6s">Learn More</button>
+                </caption>
+            </div>
+          </div>
+      </div>
+      </div>
+ 
+      <div class="item">
+        <img src="img/banner5.jpg" alt="Los Angeles" style="width:100%;"  class="img-responsive">
+        <div class="banner-text">
+          <div class="container">
+            <div class="slider-caption">
+                <caption>
+                  <h1 class="wow fadeInDown" data-wow-delay="1.2s">Renewable Energy</h1>
+                  <p class="wow fadeInDown" data-wow-delay="1.4s">A business, also known as an enterprise, agency, or a firm,<br> is an entity involved in the provision of goods, services.</p>
+                  <button  type="submit" class="slider-btn  wow fadeInDown" data-wow-delay="1.6s" href="#">Learn More</button>
+                </caption>
+            </div>
+          </div>
+      </div>
+      </div>
+    
+      <div class="item">
+        <img src="img/banner4.jpg" alt="Los Angeles" style="width:100%;" class="img-responsive">
+        <div class="banner-text">
+          <div class="container">
+            <div class="slider-caption">
+                <caption>
+                  <h1 class="wow fadeInDown" data-wow-delay="1.2s">Renewable Energy</h1>
+                  <p class="wow fadeInDown" data-wow-delay="1.4s">A business, also known as an enterprise, agency, or a firm,<br> is an entity involved in the provision of goods, services.</p>
+                  <button  type="submit" class="slider-btn  wow fadeInDown" data-wow-delay="1.6s">Learn More</button>
+                </caption>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/banner2.jpg" alt="Los Angeles" style="width:100%;"  class="img-responsive">
+        <div class="banner-text">
+          <div class="container">
+            <div class="slider-caption">
+                <caption>
+                  <h1  class="wow fadeInDown" data-wow-delay="1.2s">Renewable Energy</h1>
+                  <p class="wow fadeInDown" data-wow-delay="1.4s">A business, also known as an enterprise, agency, or a firm,<br> is an entity involved in the provision of goods, services.</p>
+                  <button  type="submit" class="slider-btn  wow fadeInDown" data-wow-delay="1.6s">Learn More</button>
+                </caption>
+            </div>
+          </div>
+      </div>
+    </div>  -->
+
+    <!-- Left and right controls -->
+    <!--  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div> 
+</div> -->
+<!-- MAIN SLIDER-->
+
+<section  class="details-top  details-bg"><!-- detailtop -->
+  <div class="col-md-24  col-sm-24  col-lg-24  col-xs-24">
+    <div class="container"><!-- container start -->
+      <div class="row"><!-- row -->
+        <div class="ban-text"  style="text-align: center;color: #fff;text-transform: uppercase;">
+          <h1  style="margin-top:113px;">ON-Grid solar power plant</h1>
+        </div>
+      </div><!-- row -->
+    </div><!-- container page end -->
+  </div>
+</section><!-- detailtop -->
+
+<section class="details-page bg-grey"><!--<!-- details page start--> 
+  <div class="col-md-24 col-sm-24 col-lg-24 col-xs-24   margin-details">
+    <div class="container"><!-- container -->
+      <div class="row  ">
+          <div class="col-md-24  col-xs-24  col-lg-24  container-fluid    wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+              <div class="advantage  well  well-sm   off-grid-padd">
+              <!--   <h1 class="service-heading">Services</h1> -->
+                <h2 style="font-size:16px;font-weight: 600;color: #5a5959;text-transform: uppercase;">ON-Grid solar power plant</h2>
+                <p>The grid connect inverter converts the DC electricity produced by the solar panels into AC electricity, which can be used by the home appliances. </p>
+                <p>If a grid connect system is producing more power than is being consumed, the surplus is fed into the mains power grid to Govt via net-meter. Govt will adjust the same in your next electricity bill.</p>
+              </div>
+          </div>  
+      </div>
+        <div class="feaure-image  wow fadeInRight" data-wow-delay="0.4s">
+          <div class="row">
+			<div class="container-fluid">
+				<img src="img/ban1.jpg"  class="img-responsive shadow">
+			</div>             
+          </div>
+        </div>
+    </div><!-- container -->
+  </div>
+</section><!-- details page star -->
+
+<section class="details-page bg-grey    wow fadeInLeft" data-wow-delay="0.4s"  style="padding-right: 0px;"><!--<!-- details page start--> 
+  <div class="col-md-24 col-sm-24 col-lg-24 col-xs-24" style="margin-top: 23px;">
+    <div class="container"><!-- container -->
+      <div class="row  "><!-- row -->
+   			<div class="col-md-24  col-lg-24  col-sm-24  col-xs-24   container-fluid"><!-- col-8 -->
+   				<div class="features-image-div  well  well-sm"   style="width: 100%;float: left;padding-top: 13px;;""  >
+   					<!-- <h3 style="font-size: 17px;text-align: center;font-weight: 600;text-transform: uppercase;color: #f94667;">1kW System Specifications</h3> -->
+                          <table class="table" style="margin-bottom: 4px !important;">
+                          <thead>
+                            <tr class="danger">
+                              <th>Power Plant Capacity </th>
+                              <th>Panel  Capacity</th>
+                              <th>No.of Panel</th>
+                              <th>ON-Grid Inverter</th>
+                              <th>Space Required</th>
+                              <th>Supporting Strucures</th>
+                              <th>Average Output Generation</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th class="info">1 kwp</th>
+                              <td>250 kwp</td>
+                              <td>4 nos.</td>
+                              <td>1KW</td>
+                              <td>8 sq meter</td>
+                              <td>GI Chanel</td>
+                              <td>1450 unit/year</td>
+                            </tr>      
+                            <tr>
+                             <th   class="info">2 kwp</th>
+                              <td>250 kwp</td>
+                              <td>8 nos.</td>
+                              <td>2KW</td>
+                              <td>16 sq meter</td>
+                              <td>GI Chanel</td>
+                              <td>2920 unit/year</td>
+                            </tr>
+                            <tr>
+                             <th  class="info">5 kwp</th>
+                              <td>250 kwp</td>
+                              <td>20 nos.</td>
+                              <td>5KW</td>
+                              <td>40 sq meter</td>
+                              <td>GI Chanel</td>
+                              <td>7300 unit/year</td>
+                            </tr>
+                            <tr>
+                             <th  class="info">10 kwp</th>
+                              <td>250 kwp</td>
+                              <td>40 nos.</td>
+                              <td>10KW</td>
+                              <td>80 sq meter</td>
+                              <td>GI Chanel</td>
+                              <td>14600 unit/year</td>
+                            </tr>
+                            <tr>
+                             <th  class="info">20 kwp</th>
+                              <td>250 kwp</td>
+                              <td>80 nos.</td>
+                              <td>20KW</td>
+                              <td>160 sq meter</td>
+                              <td>GI Chanel</td>
+                              <td>29200 unit/year</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+   			</div><!-- col-8 -->
+
+   			
+      </div><!-- row -->
+    </div><!-- container -->
+  </div><!-- col-24 -->
+</section><!-- details page star -->
+
+<section class="details-page bg-grey"><!--<!-- details page start--> 
+  <div class="col-md-24 col-sm-24 col-lg-24 col-xs-24" style="margin-top: 5px;">
+    <div class="container"><!-- container -->
+      <div class="row  ">
+          <div class="col-md-24  col-xs-24  col-lg-24  container-fluid">
+              <div class="col-md-12  col-sm-12  col-xs-12  col-lg-12 advantage-inner  container-fluid   wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;"  style="padding-left: 0px;">
+              <!--   <h1 class="service-heading">Services</h1> -->
+                <div class="recomand-div   well  well-sm">
+                    <h1 class="service-heading ">Recommended for:</h1>
+                    <div class="Residential">1. Institutions - Schools/Colleges</div>
+                    <div class="Residential">2. Commercial</div>
+                </div>
+              </div>
+              <div class="col-md-12  col-sm-12  col-xs-12  col-lg-12 advantage-inner container-fluid  wow fadeInRight" data-wow-delay="0.4s"  style="padding-right: 0px;">
+              <!--   <h1 class="service-heading">Services</h1> -->
+                <div class="recomand-div   well  well-sm">
+                    <h1 class="service-heading ">About Product:</h1>
+                    <div class="Residential" style="box-shadow:none;"><p><b>Warranty:</b>  5 years for complete system<br>25 years for Solar panel</p>
+                    <span class="pull-left" style="margin-top: 5px;font-size: 18px;font-weight: 600"><i class="fa fa-inr" aria-hidden="true"></i> 500</span>
+                    <a href="#request" class="all-btn pull-right  js-section-scroll">Request for Quotation</a>
+                  </div>
+                    
+                </div>
+              </div>
+          </div>  
+      </div>
+    </div><!-- container -->
+  </div>
+</section><!-- details page star -->
+
+<section class="advantage-outer  bg-grey">
+  <div class="col-md-24  col-sm-24  col-lg-24  col-xs-24   wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+    <div class="container">
+      <div class="row">
+         <div class="advantage  well  well-sm  off-grid-padd">
+            <h1 class="service-heading">Advantage:<span class="like"><img src="img/like.svg"></span></h1>
+          <ul>
+            <li>1.  Solar power with grid connection with Net metering benefits.</li>
+            <li>2.  Govt. Subsidies are available 30% to 70%.</li>
+            <li>3.  Utilise the 100% power and supply to Government, if solar power is not in use.</li>
+            <li>4.  This Solar system will reduce power and diesel consumption. This is the most common type of system for larger power consumers.</li>
+            <li>5.  An on-Grid solar power system becomes the most viable. It saves on both electricity cost and diesel bills.</li>
+            <li>6.  This system is just connected to the net-meter and becomes a seamless part of the grid.</li>
+            <li>7.  When the power goes off, you will still need to run the generator but your fuel consumption will be lower.</li>
+          </ul>
+          <h1 class="service-heading">Disadvantage:<span class="dislike"><img src="img/dislike.svg"></span></h1>
+          <ul>
+            <li>1.  The Grid-Tie system will work only with the grid. System will not run if the grid is down.</li>
+            <li>2.  There is no power backup or battery bank in this system.</li>
+          </ul>
+         </div>
+      </div>
+    </div>         
+  </div>
+</section>
+
+
+
+
+<!-- get in touch -->
+<section class="get-in-touch"  id="request">
+  <div class="col-md-24  col-lg-24  col-sm-24">
+    <div class="container">
+      <div class="row">
+        <div class="getin-text">
+            <h1 class="section-heading">Request a Quote</h1>
+          <div class="solar-icon">
+            <img src="img/solar-energy2.png">
+          </div>
+        </div>
+        <div class="contact-form  well  well-sm   wow fadeInRight" data-wow-delay="0.4s">
+         <div class="row">
+           <div class="col-md-12">
+              <input type="Name" name="Fname"  placeholder="First Name:">
+              <input type="" name="fname"  placeholder="Email Id:">
+           </div>
+            <div class="col-md-12">
+              <input type="Name" name="lname"  placeholder="Last Name:">
+              <input type="" name="quantity" min="0" max="9" placeholder="Contact No:">
+           </div>
+           <div class="col-md-24  col-lg-24 col-sm-24">
+              <textarea  placeholder="Message.."></textarea>
+                <div class="send-btn">
+                  <button class="send-msg">Send Request</button>
+                </div>
+            </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- get in touch section end -->
+
+
+
+
+<!-- footer-section -->
+<section class="footer">
+  <div class="col-md-24  col-sm-24 col-lg-24">
+    <div class="container">
+      <div class="row">
+        <div class="footer-logo">
+          <img src="img/logo-white.png"  alt="footer.logo"  class="img-responsive">
+        </div>
+        <div class="footer-inner">
+         <div class="col-md-24  col-lg-24 col-sm-24  wow fadeInLeft" data-wow-delay="0.8s">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#about" class="">Company Profile</a></li>
+              <li><a href="index.html#service" class="">What We Do</a></li>
+              <li><a href="off-grid.html" class="">Service</a></li>
+              <li><a href="#0" class="">Career</a></li>
+              <li><a href="index.html#team" class="">Team</a></li>
+              <li><a href="index.html#form" class="">Contact Us</a></li>
+            </ul>
+        </div>
+      <!--   <div class="col-md-12  col-lg-12 col-sm-12  wow fadeInRight" data-wow-delay="0.8s">
+            <ul class="social-media  pull-right">
+              <li class="social-icon"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+              <li class="social-icon"><a href="https://plus.google.com/discover" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+              <li class="social-icon"><a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+              <li class="social-icon"><a href="https://in.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            </ul>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- footer-section -->
+
+<section  class="bottom-footer"><!-- bottom-footer -->
+  <div class="col-md-24  col-sm-24  col-lg-24     wow fadeInUp" data-wow-delay="0.6s">
+    <div class="container">
+     <p style="text-align: center;color: #fff;margin-bottom: 0px;">Copyright © 2017 All right Reserved by Digital Web Developers</p>
+    </div>
+  </div>
+</section><!-- bottom footer -->
+
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<script type="text/javascript" src="js/tether.min.js"></script>
+<script type="text/javascript">
+  $('.js-section-scroll').on('click', function(e) {
+  e.preventDefault();
+  var section = $(this).attr('href').substr($(this).attr('href').indexOf('#'));
+  var $section = $(section);
+
+  $('html, body').animate({
+    scrollTop: $section.offset().top + 'px'
+  }, 1000);
+});
+</script>
+
+<script type="text/javascript">
+  new WOW().init();
+</script>
+</body>
+</html>
